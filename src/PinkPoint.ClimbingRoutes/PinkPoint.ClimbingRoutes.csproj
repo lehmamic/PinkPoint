@@ -7,4 +7,11 @@
   <ItemGroup>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\ClimbingSites\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Controllers\WeatherForecastController.cs" />
+    <Compile Remove="WeatherForecast.cs" />
+  </ItemGroup>
 </Project>
