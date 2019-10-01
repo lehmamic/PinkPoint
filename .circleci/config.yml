@@ -41,6 +41,8 @@ jobs:
             echo "$BASH_ENV" >> new-env-vars
             source $BASH_ENV
             echo "$InformationalVersion"
+            pwd
+            printenv
 
       - persist_to_workspace:
           root: $CIRCLE_WORKING_DIRECTORY
