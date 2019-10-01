@@ -56,7 +56,7 @@ jobs:
 
     steps:
       - attach_workspace:
-          at: /home/circleci/workspace
+          at: /home/circleci/project
 
       - setup_remote_docker
 
