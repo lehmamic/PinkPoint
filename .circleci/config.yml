@@ -21,6 +21,8 @@ jobs:
               libgpg-error0 \
               libcurl3
 
+      - jq/install
+
       - checkout
 
       - run:
@@ -61,6 +63,9 @@ jobs:
       - run:
           name: docker push
           command: docker push docker.pkg.github.com/lehmamic/pinkpoint/climbing-sites:unversioned
+
+orbs:
+  jq: circleci/jq@1.9.0
 
 workflows:
   version: 2.1
