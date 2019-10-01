@@ -16,10 +16,10 @@ jobs:
               libc6-dev \
               libgcrypt20 \
               libkeyutils1 \
-              libcurl3-gnutls \
+              libcurl4-gnutls \
               libsasl2-2 \
               libgpg-error0 \
-              libcurl3
+              libcurl4
 
       - checkout
 
