@@ -1,8 +1,40 @@
 version: 2.1
 jobs:
+  git-version:
+    docker:
+      - image: mcr.microsoft.com/dotnet/core/aspnet:3.0-buster-slim
+
+    steps:
+      - run:
+          name: install git version pre-requisites
+          command: |
+            apt-get update
+            apt-get install -y --no-install-recommends \
+              libc6 \
+              zlib1g-dev \
+              libcomerr2 \
+              libc6-dev \
+              libgcrypt20 \
+              libkeyutils1 \
+              libcurl3-gnutls \
+              libsasl2-2 \
+              libgpg-error0 \
+              libcurl3
+
+      - checkout
+
+      - run:
+          name: install git version
+          command: |
+            dotnet tool install --global GitVersion.Tool --version 5.0.1
+            export PATH="$PATH:/root/.dotnet/tools"
+
+      - run:
+          name: git version
+          command: dotnet-gitversion /output buildserver
   build:
     docker:
-     - image: circleci/node:lts
+      - image: circleci/node:lts
 
     steps:
       - checkout
@@ -22,3 +54,13 @@ jobs:
       - run:
           name: docker push
           command: docker push docker.pkg.github.com/lehmamic/pinkpoint/climbing-sites:unversioned
+
+workflows:
+  version: 2.1
+  build_and_deploy:
+    jobs:
+      - git-version
+
+      - build:
+          requires:
+            - git-version
