@@ -51,7 +51,8 @@ jobs:
       - image: circleci/node:lts
 
     steps:
-      - attach_workspace
+      - attach_workspace:
+          at: ${CIRCLE_WORKING_DIRECTORY}
 
       - setup_remote_docker
 
