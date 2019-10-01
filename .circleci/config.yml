@@ -41,12 +41,15 @@ jobs:
             source $BASH_ENV
             echo "$InformationalVersion"
 
+      - persist_to_workspace:
+          root: workspace
+
   build:
     docker:
       - image: circleci/node:lts
 
     steps:
-      - checkout
+      - attach_workspace
 
       - setup_remote_docker
 
