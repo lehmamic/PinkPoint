@@ -32,7 +32,13 @@ jobs:
 
       - run:
           name: git version
-          command: dotnet-gitversion /nocache /output json
+          command: |
+            for s in $(dotnet-gitversion /nocache /output json | jq -r "to_entries|map(\"\(.key)=\(.value|tostring)\")|.[]" ); do
+              echo "export $s" >> $BASH_ENV
+            done
+            source $BASH_ENV
+            echo "$FullSemVer"
+          
   build:
     docker:
       - image: circleci/node:lts
