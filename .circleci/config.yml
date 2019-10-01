@@ -19,7 +19,7 @@ jobs:
               libcurl3-gnutls \
               libsasl2-2 \
               libgpg-error0 \
-              libcurl4
+              libcurl3
 
       - checkout
 
