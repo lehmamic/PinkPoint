@@ -35,16 +35,13 @@ jobs:
       - run:
           name: git version
           command: |
-            for s in $(dotnet-gitversion /nocache /output json | jq -r "to_entries|map(\"\(.key)=\(.value|tostring)\")|.[]" ); do
+            dotnet-gitversion /nocache /output json >> git-version.json
+            for s in $(cat git-version.json | jq -r "to_entries|map(\"\(.key)=\(.value|tostring)\")|.[]" ); do
               echo "$s"
               echo "export $s" >> $BASH_ENV
             done
-            echo "$BASH_ENV"
-            echo "$BASH_ENV" >> new-env-vars
-            cat new-env-vars
-            ls -a
-            pwd
             source $BASH_ENV
+            ls -a
             echo "$InformationalVersion"
 
       - persist_to_workspace:
@@ -64,13 +61,13 @@ jobs:
       - setup_remote_docker
 
       - run:
-          name: restore env var
+          name: restore git version
           command: |
             pwd
-            printenv
-            ls -a
-            cat new-env-vars
-            cat new-env-vars >> $BASH_ENV
+            for s in $(cat git-version.json | jq -r "to_entries|map(\"\(.key)=\(.value|tostring)\")|.[]" ); do
+              echo "$s"
+              echo "export $s" >> $BASH_ENV
+            done
             source $BASH_ENV
             printenv
 
