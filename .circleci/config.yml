@@ -36,12 +36,11 @@ jobs:
           name: git version
           command: |
             dotnet-gitversion /nocache /output json >> git-version.json
+            cat git-version.json
             for s in $(cat git-version.json | jq -r "to_entries|map(\"\(.key)=\(.value|tostring)\")|.[]" ); do
-              echo "$s"
               echo "export $s" >> $BASH_ENV
             done
             source $BASH_ENV
-            ls -a
             echo "$InformationalVersion"
 
       - persist_to_workspace:
@@ -63,7 +62,8 @@ jobs:
       - run:
           name: restore git version
           command: |
-            pwd
+            cat git-version.json
+            cat 
             for s in $(cat git-version.json | jq -r "to_entries|map(\"\(.key)=\(.value|tostring)\")|.[]" ); do
               echo "$s"
               echo "export $s" >> $BASH_ENV
