@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   git-version:
     docker:
-      - image: mcr.microsoft.com/dotnet/core/sdk:3.0-buster
+      - image: mcr.microsoft.com/dotnet/core/sdk:2.1-buster
 
     steps:
       - run:
@@ -25,10 +25,8 @@ jobs:
 
       - run:
           name: install git version
-          command: |
-            export PATH="$PATH:~/.dotnet/tools"
-            dotnet tool install --global GitVersion.Tool --version 5.0.1
-      - run: cd ~/.dotnet/tools && ls -a
+          command: dotnet tool install --global GitVersion.Tool --version 5.0.1
+
       - run:
           name: git version
           command: ~/.dotnet/tools/dotnet-gitversion /output buildserver
