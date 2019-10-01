@@ -26,15 +26,9 @@ export class ClimbingRoutesService {
   constructor(private http: HttpClient) { }
 
   public queryClimbingSites(queryParam: { skip?: number; take?: number }): Observable<ClimbingSiteResponse[]> {
-    const params = new HttpParams();
-
-    if (queryParam.skip) {
-      params.set('skip', `${queryParam.skip}`);
-    }
-
-    if (queryParam.take) {
-      params.set('take', `${queryParam.take}`);
-    }
+    const params = new HttpParams()
+      .set('skip', queryParam.skip !== undefined ? `${queryParam.skip}` : '0')
+      .set('take', queryParam.take !== undefined ? `${queryParam.take}` : '10');
 
     return this.http.get<ClimbingSiteResponse[]>(`${environment.apiRootUri}/climbingsites`, { params });
   }
