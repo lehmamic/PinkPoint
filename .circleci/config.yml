@@ -41,11 +41,9 @@ jobs:
             echo "$BASH_ENV" >> new-env-vars
             source $BASH_ENV
             echo "$InformationalVersion"
-            pwd
-            printenv
 
       - persist_to_workspace:
-          root: $CIRCLE_WORKING_DIRECTORY
+          root: /root/project
           paths:
             - .
 
@@ -55,7 +53,7 @@ jobs:
 
     steps:
       - attach_workspace:
-          at: $CIRCLE_WORKING_DIRECTORY
+          at: /root/project
 
       - setup_remote_docker
 
