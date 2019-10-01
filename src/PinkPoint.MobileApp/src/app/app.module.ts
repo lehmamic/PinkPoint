@@ -9,22 +9,33 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
-import { reducers, metaReducers } from './reducers';
+import { rootReducers, metaReducers } from './app.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from './app.effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, StoreModule.forRoot(reducers, {
+  imports: [
+    BrowserModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    StoreModule.forRoot(rootReducers, {
       metaReducers,
       runtimeChecks: {
         strictStateImmutability: true,
         strictActionImmutability: true
       }
-    }), EffectsModule.forRoot([AppEffects]), StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })],
+    }),
+    EffectsModule.forRoot([AppEffects]),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    StoreRouterConnectingModule.forRoot({
+      stateKey: 'router',
+    }),
+  ],
   providers: [
     StatusBar,
     SplashScreen,
