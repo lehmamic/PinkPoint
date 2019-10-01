@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   git-version:
     docker:
-      - image: mcr.microsoft.com/dotnet/core/aspnet:3.0-buster-slim
+      - image: mcr.microsoft.com/dotnet/core/sdk:3.0-buster-slim
 
     steps:
       - run:
