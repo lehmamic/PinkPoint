@@ -42,7 +42,7 @@ jobs:
             echo "$InformationalVersion"
 
       - persist_to_workspace:
-          root: .
+          root: ${CIRCLE_WORKING_DIRECTORY}
           paths:
             - .
 
