@@ -38,11 +38,12 @@ jobs:
             for s in $(dotnet-gitversion /nocache /output json | jq -r "to_entries|map(\"\(.key)=\(.value|tostring)\")|.[]" ); do
               echo "export $s" >> $BASH_ENV
             done
+            echo "$BASH_ENV" >> new-env-vars
             source $BASH_ENV
             echo "$InformationalVersion"
 
       - persist_to_workspace:
-          root: ${CIRCLE_WORKING_DIRECTORY}
+          root: $CIRCLE_WORKING_DIRECTORY
           paths:
             - .
 
@@ -52,7 +53,7 @@ jobs:
 
     steps:
       - attach_workspace:
-          at: ${CIRCLE_WORKING_DIRECTORY}
+          at: $CIRCLE_WORKING_DIRECTORY
 
       - setup_remote_docker
 
