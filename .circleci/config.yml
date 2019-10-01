@@ -21,9 +21,9 @@ jobs:
               libgpg-error0 \
               libcurl3
 
-      - jq/install
-
       - checkout
+
+      - jq/install
 
       - run:
           name: install git version
