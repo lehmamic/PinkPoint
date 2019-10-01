@@ -51,9 +51,9 @@ jobs:
     docker:
       - image: circleci/node:lts
 
-    working_directory: /root/project
-
     steps:
+      - run: mkdir -p /root/project
+
       - attach_workspace:
           at: /root/project
 
