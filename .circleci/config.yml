@@ -54,7 +54,7 @@ jobs:
           name: build docker image
           working_directory: ./src
           command: |
-           docker build -t docker.pkg.github.com/lehmamic/pinkpoint/climbing-sites:"$FullSemVer" -f PinkPoint.ClimbingRoutes/Dockerfile .
+           docker build -t docker.pkg.github.com/lehmamic/pinkpoint/climbing-sites:${FullSemVer} -f PinkPoint.ClimbingRoutes/Dockerfile .
 
       - run:
           name: docker login
@@ -62,7 +62,7 @@ jobs:
 
       - run:
           name: docker push
-          command: docker push docker.pkg.github.com/lehmamic/pinkpoint/climbing-sites:"$FullSemVer"
+          command: docker push docker.pkg.github.com/lehmamic/pinkpoint/climbing-sites:${FullSemVer}
 
 orbs:
   jq: circleci/jq@1.9.0
