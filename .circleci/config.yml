@@ -61,11 +61,12 @@ jobs:
       - setup_remote_docker
 
       - run:
-          name: restore environment variables
+          name: restore env var
           command: |
             pwd
             printenv
             ls -a
+            cat new-env-vars
             cat new-env-vars >> $BASH_ENV
             source $BASH_ENV
             printenv
