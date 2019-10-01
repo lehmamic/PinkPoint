@@ -4,7 +4,7 @@ jobs:
     docker:
       - image: mcr.microsoft.com/dotnet/core/sdk:2.1
 
-    working_directory: /build/project
+    working_directory: ~/workspace
 
     steps:
       - run:
@@ -45,7 +45,7 @@ jobs:
             echo "$InformationalVersion"
 
       - persist_to_workspace:
-          root: /build/project
+          root: .
           paths:
             - .
 
@@ -53,11 +53,11 @@ jobs:
     docker:
       - image: circleci/node:lts
 
-    working_directory: /build/project
+    working_directory: ~/workspace
 
     steps:
       - attach_workspace:
-          at: /build/project
+          at: ~/workspace
 
       - setup_remote_docker
 
