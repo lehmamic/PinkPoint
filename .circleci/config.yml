@@ -25,11 +25,14 @@ jobs:
 
       - run:
           name: install git version
-          command: dotnet tool install --global GitVersion.Tool --version 5.0.1
+          command: |
+            dotnet tool install --global GitVersion.Tool --version 5.0.1
+            echo "export PATH=$PATH:~/.dotnet/tools" >> $BASH_ENV
+            source $BASH_ENV
 
       - run:
           name: git version
-          command: ~/.dotnet/tools/dotnet-gitversion /output buildserver
+          command: dotnet-gitversion /nocache /output json
   build:
     docker:
       - image: circleci/node:lts
