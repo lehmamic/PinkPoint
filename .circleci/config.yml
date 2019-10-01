@@ -26,9 +26,8 @@ jobs:
       - run:
           name: install git version
           command: |
-            export PATH="$PATH:/root/.dotnet/tools"
+            export PATH="$PATH:~/.dotnet/tools"
             dotnet tool install --global GitVersion.Tool --version 5.0.1
-
       - run:
           name: git version
           command: dotnet-gitversion /output buildserver
