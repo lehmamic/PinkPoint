@@ -28,9 +28,10 @@ jobs:
           command: |
             export PATH="$PATH:~/.dotnet/tools"
             dotnet tool install --global GitVersion.Tool --version 5.0.1
+      - run: cd ~/.dotnet/tools && ls -a
       - run:
           name: git version
-          command: dotnet-gitversion /output buildserver
+          command: ~/.dotnet/tools/dotnet-gitversion /output buildserver
   build:
     docker:
       - image: circleci/node:lts
