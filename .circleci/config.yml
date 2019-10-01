@@ -9,4 +9,7 @@ jobs:
 
       - setup_remote_docker
 
-      - run: docker build -t climbing-sites:0 -f ./src/PinkPoint.ClimbingRoutes/Dockerfile ./src
+      - run:
+          name: build docker image
+          working_directory: ./src
+          command: docker build -t climbing-sites:0 -f PinkPoint.ClimbingRoutes/Dockerfile .
