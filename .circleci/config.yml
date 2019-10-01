@@ -12,7 +12,8 @@ jobs:
       - run:
           name: build docker image
           working_directory: ./src
-          command: docker build -t docker.pkg.github.com/lehmamic/pinkpoint/climbing-sites:unversioned -f PinkPoint.ClimbingRoutes/Dockerfile .
+          command: |
+           docker build -t docker.pkg.github.com/lehmamic/pinkpoint/climbing-sites:unversioned -f PinkPoint.ClimbingRoutes/Dockerfile .
 
       - run:
           name: docker login
@@ -20,4 +21,4 @@ jobs:
 
       - run:
           name: docker push
-          command: docker.pkg.github.com/lehmamic/pinkpoint/climbing-sites:unversioned
+          command: docker push docker.pkg.github.com/lehmamic/pinkpoint/climbing-sites:unversioned
