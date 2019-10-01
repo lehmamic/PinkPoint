@@ -36,9 +36,12 @@ jobs:
           name: git version
           command: |
             for s in $(dotnet-gitversion /nocache /output json | jq -r "to_entries|map(\"\(.key)=\(.value|tostring)\")|.[]" ); do
+              echo "$s"
               echo "export $s" >> $BASH_ENV
             done
+            echo "$BASH_ENV"
             echo "$BASH_ENV" >> new-env-vars
+            cat new-env-vars
             ls -a
             pwd
             source $BASH_ENV
