@@ -6,6 +6,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { ClimbingSitesPage } from './climbing-sites.page';
+import { EffectsModule } from '@ngrx/effects';
+import { ClimbingSitesEffects } from './climbing-sites.effects';
+import { StoreModule } from '@ngrx/store';
+import { climbingSitesReducer } from './climbing-sites.reducer';
+import { CLIMBING_SITES_FEATURE_KEY } from './climbing-sites.state';
 
 const routes: Routes = [
   {
@@ -19,7 +24,9 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    StoreModule.forFeature(CLIMBING_SITES_FEATURE_KEY, climbingSitesReducer),
+    EffectsModule.forFeature([ClimbingSitesEffects])
   ],
   declarations: [ClimbingSitesPage]
 })
