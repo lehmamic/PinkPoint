@@ -6,11 +6,16 @@
 
 <ion-content fullscreen>
   <ion-list>
-    <ion-item *ngFor="let site of (climbingSites$ | async)">
+    <ion-item *ngFor="let site of (climbingSitesState$ | async).data">
       <ion-label>
         <h2>{{ site.name }}</h2>
         <b>{{ site.address.state }}</b> {{ site.address.postCode + " " + site.address.city}}
       </ion-label>
     </ion-item>
   </ion-list>
+
+  <ion-infinite-scroll threshold="100px" [disabled]="(climbingSitesState$ | async).allDataLoaded" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more climbing sites...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>

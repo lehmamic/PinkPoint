@@ -3,11 +3,13 @@ import { createFeatureSelector } from '@ngrx/store';
 
 export const initalClimbingSitesState: ClimbingSitesState = {
     data: [],
+    allDataLoaded: false,
 };
 
 export interface ClimbingSitesState {
     data: ClimbingSiteResponse[];
-};
+    allDataLoaded: boolean;
+}
 
 export const CLIMBING_SITES_FEATURE_KEY = 'climbing-sites';
 

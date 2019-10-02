@@ -8,6 +8,7 @@ export function climbingSitesReducer(state: ClimbingSitesState = initalClimbingS
       return {
         ...state,
         data: action.payload.replace ? action.payload.climbingSites : [...state.data, ...action.payload.climbingSites],
+        allDataLoaded: action.payload.allDataLoaded,
       };
     }
 
