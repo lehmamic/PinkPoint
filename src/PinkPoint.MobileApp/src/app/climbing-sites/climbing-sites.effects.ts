@@ -25,7 +25,7 @@ export class ClimbingSitesEffects {
         flatMap(climbingSites => [
             new QueryClimbingSitesSucceededAction({
               climbingSites,
-              replace: action.payload.skip > 0,
+              replace: action.payload.skip <= 0,
               allDataLoaded: climbingSites.length < (action.payload.take !== undefined ? action.payload.take : 10) }
             ),
             new ReportRequestInfoAction({ type: 'QUERY_CLIMBING_SITES', correlationId, status: 'SUCCEEDED' })

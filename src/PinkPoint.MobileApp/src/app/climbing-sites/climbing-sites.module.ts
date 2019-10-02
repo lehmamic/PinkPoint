@@ -11,6 +11,7 @@ import { ClimbingSitesEffects } from './climbing-sites.effects';
 import { StoreModule } from '@ngrx/store';
 import { climbingSitesReducer } from './climbing-sites.reducer';
 import { CLIMBING_SITES_FEATURE_KEY } from './climbing-sites.state';
+import { SharedModule } from '../shared/shared.module';
 
 const routes: Routes = [
   {
@@ -26,7 +27,8 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes),
     StoreModule.forFeature(CLIMBING_SITES_FEATURE_KEY, climbingSitesReducer),
-    EffectsModule.forFeature([ClimbingSitesEffects])
+    EffectsModule.forFeature([ClimbingSitesEffects]),
+    SharedModule,
   ],
   declarations: [ClimbingSitesPage]
 })

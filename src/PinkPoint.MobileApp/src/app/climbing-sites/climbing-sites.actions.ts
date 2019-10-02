@@ -14,7 +14,7 @@ export class QueryClimbingSitesAction implements Action {
 }
 
 export class QueryClimbingSitesNextPageAction implements Action {
-  readonly type = ClimbingSitesActionTypes.QueryClimbingSites;
+  readonly type = ClimbingSitesActionTypes.QueryClimbingSitesNextPage;
 }
 
 export class QueryClimbingSitesSucceededAction implements Action {

@@ -14,7 +14,7 @@
     </ion-item>
   </ion-list>
 
-  <ion-infinite-scroll threshold="100px" [disabled]="(climbingSitesState$ | async).allDataLoaded" (ionInfinite)="loadData($event)">
+  <ion-infinite-scroll threshold="100px" [disabled]="(climbingSitesState$ | async).allDataLoaded" [appTrackLoading]="'QUERY_CLIMBING_SITES'" (ionInfinite)="loadData($event)">
     <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more climbing sites...">
     </ion-infinite-scroll-content>
   </ion-infinite-scroll>
