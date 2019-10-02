@@ -1,4 +1,4 @@
-﻿namespace PinkPoint.ClimbingRoutes.Controllers.ClimbingSites
+﻿namespace PinkPoint.ClimbingRoutes.Controllers
 {
     public class PagingParameters
     {

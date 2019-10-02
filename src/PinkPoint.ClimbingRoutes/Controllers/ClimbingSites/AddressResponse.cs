@@ -1,6 +1,6 @@
-﻿namespace PinkPoint.ClimbingRoutes.Controllers.ClimbingSites
+﻿namespace PinkPoint.ClimbingRoutes.Controllers
 {
-    public class Address
+    public class AddressResponse
     {
         public string Street { get; set; }
 

@@ -5,6 +5,10 @@
 </ion-header>
 
 <ion-content fullscreen>
+  <ion-refresher slot="fixed" [disabled]="false" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
   <ion-list>
     <ion-item *ngFor="let site of (climbingSitesState$ | async).data">
       <ion-label>

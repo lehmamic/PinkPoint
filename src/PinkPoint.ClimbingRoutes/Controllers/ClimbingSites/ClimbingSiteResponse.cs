@@ -8,6 +8,6 @@ namespace PinkPoint.ClimbingRoutes.Controllers.ClimbingSites
 
         public string Name { get; set; }
 
-        public Address Address { get; set; }
+        public AddressResponse Address { get; set; }
     }
 }

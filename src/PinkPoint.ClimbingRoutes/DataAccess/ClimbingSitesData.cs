@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace PinkPoint.ClimbingRoutes.Controllers.ClimbingSites
+namespace PinkPoint.ClimbingRoutes.DataAccess
 {
     public class ClimbingSitesData
     {
-        public static IEnumerable<ClimbingSiteResponse> ClimbingSites = new[]
+        public static IEnumerable<ClimbingSite> ClimbingSites = new[]
         {
-            new ClimbingSiteResponse
+            new ClimbingSite
             {
                 Id = Guid.NewGuid(),
                 Name = "6a plus - Kletterhalle Winterthur",
@@ -19,7 +19,7 @@ namespace PinkPoint.ClimbingRoutes.Controllers.ClimbingSites
                     State = "Zürich",
                 },
             },
-            new ClimbingSiteResponse
+            new ClimbingSite
             {
                 Id = Guid.NewGuid(),
                 Name = "BLOCKFELD Boulderpark - Winterthur",
@@ -31,7 +31,7 @@ namespace PinkPoint.ClimbingRoutes.Controllers.ClimbingSites
                     State = "Zürich",
                 },
             },
-            new ClimbingSiteResponse
+            new ClimbingSite
             {
                 Id = Guid.NewGuid(),
                 Name = "Kletterzentrum Milandia Greifensee",
@@ -43,7 +43,7 @@ namespace PinkPoint.ClimbingRoutes.Controllers.ClimbingSites
                     State = "Zürich",
                 },
             },
-            new ClimbingSiteResponse
+            new ClimbingSite
             {
                 Id = Guid.NewGuid(),
                 Name = "Griffig Kletterhalle Uster",
@@ -55,7 +55,7 @@ namespace PinkPoint.ClimbingRoutes.Controllers.ClimbingSites
                     State = "Zürich",
                 },
             },
-            new ClimbingSiteResponse
+            new ClimbingSite
             {
                 Id = Guid.NewGuid(),
                 Name = "Aranea Schaffhausen",
@@ -67,7 +67,7 @@ namespace PinkPoint.ClimbingRoutes.Controllers.ClimbingSites
                     State = "Schaffhausen",
                 },
             },
-            new ClimbingSiteResponse
+            new ClimbingSite
             {
                 Id = Guid.NewGuid(),
                 Name = "Ap und Daun",
@@ -79,7 +79,7 @@ namespace PinkPoint.ClimbingRoutes.Controllers.ClimbingSites
                     State = "Graubünden",
                 },
             },
-            new ClimbingSiteResponse
+            new ClimbingSite
             {
                 Id = Guid.NewGuid(),
                 Name = "BLOCKFELD Boulders und Kletterwand",
@@ -91,7 +91,7 @@ namespace PinkPoint.ClimbingRoutes.Controllers.ClimbingSites
                     State = "Thurgau",
                 },
             },
-            new ClimbingSiteResponse
+            new ClimbingSite
             {
                 Id = Guid.NewGuid(),
                 Name = "Minimum (Boulderhalle)",
@@ -103,7 +103,7 @@ namespace PinkPoint.ClimbingRoutes.Controllers.ClimbingSites
                     State = "Zürich",
                 },
             },
-            new ClimbingSiteResponse
+            new ClimbingSite
             {
                 Id = Guid.NewGuid(),
                 Name = "Boulderei Flums",
@@ -115,7 +115,7 @@ namespace PinkPoint.ClimbingRoutes.Controllers.ClimbingSites
                     State = "St. Gallen",
                 },
             },
-            new ClimbingSiteResponse
+            new ClimbingSite
             {
                 Id = Guid.NewGuid(),
                 Name = "Bloczone, Salle d'escalade",
@@ -127,7 +127,7 @@ namespace PinkPoint.ClimbingRoutes.Controllers.ClimbingSites
                     State = "Freiburg",
                 },
             },
-            new ClimbingSiteResponse
+            new ClimbingSite
             {
                 Id = Guid.NewGuid(),
                 Name = "boulder-gade in Arth",
@@ -139,7 +139,7 @@ namespace PinkPoint.ClimbingRoutes.Controllers.ClimbingSites
                     State = "Schwyz",
                 },
             },
-            new ClimbingSiteResponse
+            new ClimbingSite
             {
                 Id = Guid.NewGuid(),
                 Name = "Boulderraum Sportzentrum Grindelwald",
@@ -151,7 +151,7 @@ namespace PinkPoint.ClimbingRoutes.Controllers.ClimbingSites
                     State = "Bern",
                 },
             },
-            new ClimbingSiteResponse
+            new ClimbingSite
             {
                 Id = Guid.NewGuid(),
                 Name = "Boulderraum Altstadt Brugg",
@@ -163,7 +163,7 @@ namespace PinkPoint.ClimbingRoutes.Controllers.ClimbingSites
                     State = "Aargau",
                 },
             },
-            new ClimbingSiteResponse
+            new ClimbingSite
             {
                 Id = Guid.NewGuid(),
                 Name = "B2 Boulder & Bar",
@@ -175,7 +175,7 @@ namespace PinkPoint.ClimbingRoutes.Controllers.ClimbingSites
                     State = "Basel",
                 },
             },
-            new ClimbingSiteResponse
+            new ClimbingSite
             {
                 Id = Guid.NewGuid(),
                 Name = "Nordwandhalle",

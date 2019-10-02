@@ -26,6 +26,10 @@ export class ClimbingSitesPage implements OnInit {
     this.store$.dispatch(new QueryClimbingSitesAction({ skip: 0, take: 10 }));
   }
 
+  public doRefresh(event) {
+    this.store$.dispatch(new QueryClimbingSitesAction({ skip: 0, take: 10 }));
+  }
+
   public loadData(event) {
     this.store$.dispatch(new QueryClimbingSitesNextPageAction());
   }
