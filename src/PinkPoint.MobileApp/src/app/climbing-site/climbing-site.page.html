@@ -16,4 +16,13 @@
       {{ (climbingSite$ | async).address.state }}
     </p>
   </div>
+
+  <ion-list>
+    <ion-item [routerLink]="['/climbing-sites', (climbingSite$ | async).id, 'climbing-routes']">
+      <ion-label>
+        <h2>Routes</h2>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
 </ion-content>
