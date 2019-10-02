@@ -1,5 +1,4 @@
 ﻿using System;
-using PinkPoint.ClimbingRoutes.DataAccess;
 using System.Text.Json.Serialization;
 
 namespace PinkPoint.ClimbingRoutes.Controllers.ClimbingRoutes
