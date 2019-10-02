@@ -1,9 +1,19 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>climbing-site</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ (climbingSite$ | async).name }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <div class="climbing-site-info">
+    <h1>{{ (climbingSite$ | async).name }}</h1>
+    <p>
+      {{ (climbingSite$ | async).address.street }} <br />
+      {{ (climbingSite$ | async).address.postCode + ' ' + (climbingSite$ | async).address.city }} <br />
+      {{ (climbingSite$ | async).address.state }}
+    </p>
+  </div>
 </ion-content>

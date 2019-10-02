@@ -10,7 +10,7 @@ using PinkPoint.ClimbingRoutes.DataAccess;
 namespace PinkPoint.ClimbingRoutes.Controllers.ClimbingSites
 {
     [ApiController]
-    [Route("api/v1/[controller]")]
+    [Route("api/v1/climbing-sites")]
     public class ClimbingSitesController : ControllerBase
     {
         private readonly IMapper mapper;
@@ -32,6 +32,18 @@ namespace PinkPoint.ClimbingRoutes.Controllers.ClimbingSites
                 .ToArray();
 
             return Ok(await Task.FromResult(this.mapper.Map<IEnumerable<ClimbingSiteResponse>>(sites)));
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<ClimbingSiteResponse>> Get(Guid id)
+        {
+            var site = ClimbingSitesData.ClimbingSites.SingleOrDefault(s => s.Id == id);
+            if (site == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(await Task.FromResult(this.mapper.Map<ClimbingSiteResponse>(site)));
         }
     }
 }

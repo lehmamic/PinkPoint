@@ -44,14 +44,18 @@ export class ClimbingRoutesService {
       .set('skip', queryParam.skip !== undefined ? `${queryParam.skip}` : '0')
       .set('take', queryParam.take !== undefined ? `${queryParam.take}` : '10');
 
-    return this.http.get<ClimbingSiteResponse[]>(`${environment.apiRootUri}/climbingsites`, { params });
+    return this.http.get<ClimbingSiteResponse[]>(`${environment.apiRootUri}/climbing-sites`, { params });
   }
 
-  public queryClimbingRoutes(queryParam: { skip?: number; take?: number }): Observable<ClimbingRouteResponse[]> {
+  public loadClimbingSite(id: string): Observable<ClimbingSiteResponse> {
+    return this.http.get<ClimbingSiteResponse>(`${environment.apiRootUri}/climbing-sites/${id}`);
+  }
+
+  public queryClimbingRoutes(siteId: string, queryParam: { skip?: number; take?: number }): Observable<ClimbingRouteResponse[]> {
     const params = new HttpParams()
       .set('skip', queryParam.skip !== undefined ? `${queryParam.skip}` : '0')
       .set('take', queryParam.take !== undefined ? `${queryParam.take}` : '10');
 
-    return this.http.get<ClimbingRouteResponse[]>(`${environment.apiRootUri}/climbingroutes`, { params });
+    return this.http.get<ClimbingRouteResponse[]>(`${environment.apiRootUri}/climbing-sites/${siteId}/climbing-routes`, { params });
   }
 }

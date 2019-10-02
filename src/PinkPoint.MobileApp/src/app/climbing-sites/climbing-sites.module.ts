@@ -28,7 +28,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     StoreModule.forFeature(CLIMBING_SITES_FEATURE_KEY, climbingSitesReducer),
     EffectsModule.forFeature([ClimbingSitesEffects]),
-    SharedModule,
+    SharedModule
   ],
   declarations: [ClimbingSitesPage]
 })

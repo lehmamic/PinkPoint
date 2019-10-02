@@ -11,7 +11,7 @@ using PinkPoint.ClimbingRoutes.DataAccess;
 namespace PinkPoint.ClimbingRoutes.Controllers.ClimbingRoutes
 {
     [ApiController]
-    [Route("api/v1/[controller]")]
+    [Route("api/v1/climbing-sites")]
     public class ClimbingRoutesController : ControllerBase
     {
         private readonly IMapper mapper;
@@ -23,7 +23,7 @@ namespace PinkPoint.ClimbingRoutes.Controllers.ClimbingRoutes
             this.logger = logger;
         }
 
-        [HttpGet("{sideId}")]
+        [HttpGet("{sideId}/climbing-routes")]
         public async Task<ActionResult<IEnumerable<ClimbingRouteResponse>>> Get(Guid siteId, [FromQuery]PagingParameters paging)
         {
             var site = ClimbingSitesData.ClimbingSites.SingleOrDefault(s => s.Id == siteId);

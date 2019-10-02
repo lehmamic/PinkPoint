@@ -10,7 +10,7 @@
   </ion-refresher>
 
   <ion-list>
-    <ion-item *ngFor="let site of (climbingSitesState$ | async).data">
+    <ion-item *ngFor="let site of (climbingSitesState$ | async).data" [routerLink]="['/climbing-sites', site.id]">
       <ion-label>
         <h2>{{ site.name }}</h2>
         <b>{{ site.address.state }}</b> {{ site.address.postCode + " " + site.address.city}}

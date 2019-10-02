@@ -7,7 +7,7 @@ const routes: Routes = [
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule),
   },
   {
-    path: 'climbing-sites/:siteId',
+    path: 'climbing-sites/:id',
     loadChildren: () => import('./climbing-site/climbing-site.module').then(m => m.ClimbingSitePageModule),
   },
   {
