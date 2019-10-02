@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { map, catchError, withLatestFrom, startWith, flatMap } from 'rxjs/operators';
+import { map, catchError, withLatestFrom, startWith, flatMap, concatAll } from 'rxjs/operators';
 import {
   QueryClimbingSitesAction,
   ClimbingSitesActionTypes,
@@ -22,12 +22,16 @@ export class ClimbingSitesEffects {
     withLatestFrom(of(Guid.create())),
     flatMap(([action, correlationId]) => this.climbingRoutesService.queryClimbingSites(action.payload)
       .pipe(
-        map(climbingSites => new QueryClimbingSitesSucceededAction({
-          climbingSites,
-          replace: action.payload.skip > 0,
-          allDataLoaded: climbingSites.length < (action.payload.take !== undefined ? action.payload.take : 10) }) as Action),
+        flatMap(climbingSites => [
+            new QueryClimbingSitesSucceededAction({
+              climbingSites,
+              replace: action.payload.skip > 0,
+              allDataLoaded: climbingSites.length < (action.payload.take !== undefined ? action.payload.take : 10) }
+            ),
+            new ReportRequestInfoAction({ type: 'QUERY_CLIMBING_SITES', correlationId, status: 'SUCCEEDED' })
+          ] as Action[]),
           startWith(new ReportRequestInfoAction({ type: 'QUERY_CLIMBING_SITES', correlationId, status: 'PENDING' })),
-        catchError(() => of<Action>()),
+        catchError(() => of<Action>(new ReportRequestInfoAction({ type: 'QUERY_CLIMBING_SITES', correlationId, status: 'FAILED' }))),
       )
     )
   ));
