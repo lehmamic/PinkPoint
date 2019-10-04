@@ -23,7 +23,7 @@ namespace PinkPoint.ClimbingRoutes.Controllers.ClimbingRoutes
             this.logger = logger;
         }
 
-        [HttpGet("{sideId}/climbing-routes")]
+        [HttpGet("{siteId}/climbing-routes")]
         public async Task<ActionResult<IEnumerable<ClimbingRouteResponse>>> Get(Guid siteId, [FromQuery]PagingParameters paging)
         {
             var site = ClimbingSitesData.ClimbingSites.SingleOrDefault(s => s.Id == siteId);
@@ -35,9 +35,9 @@ namespace PinkPoint.ClimbingRoutes.Controllers.ClimbingRoutes
             var routes = site.Routes.OrderBy(s => s.Name)
                 .Skip(paging.Skip ?? 0)
                 .Take(paging.Take ?? 10)
-                .ToArray();
-
-            return Ok(await Task.FromResult(this.mapper.Map<IEnumerable<ClimbingRouteResponse>>(routes)));
+                .AsEnumerable();
+            var result = this.mapper.Map<IEnumerable<ClimbingRouteResponse>>(routes);
+            return Ok(await Task.FromResult(result));
         }
     }
 }

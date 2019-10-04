@@ -2,7 +2,7 @@ import { RouterReducerState } from '@ngrx/router-store';
 import { Guid } from 'guid-typescript';
 
 export type RequestStatus = 'PENDING' | 'SUCCEEDED' | 'FAILED';
-export type RequestType = 'QUERY_CLIMBING_SITES' | 'LOAD_CLIMBING_SITE';
+export type RequestType = 'QUERY_CLIMBING_SITES' | 'LOAD_CLIMBING_SITE' | 'QUERY_CLIMBING_ROUTES';
 
 export interface RequestInfo {
   correlationId: Guid;

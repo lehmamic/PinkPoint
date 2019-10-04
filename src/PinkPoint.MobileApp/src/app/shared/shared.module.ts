@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { TrackLoadingDirective } from './directives/track-loading.directive';
+import { AutoCompleteDirective } from './directives/auto-complete.directive';
 
 @NgModule({
   declarations: [
-    TrackLoadingDirective
+    AutoCompleteDirective
   ],
   imports: [
     CommonModule,
     HttpClientModule,
   ],
   exports: [
-    TrackLoadingDirective,
+    AutoCompleteDirective,
   ],
 })
 export class SharedModule { }

@@ -7,6 +7,22 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content fullscreen>
+    <ion-refresher slot="fixed" [disabled]="siteId === undefined" [appAutoComplete]="'QUERY_CLIMBING_ROUTES'" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+      </ion-refresher>
+    
+      <ion-list>
+        <ion-item *ngFor="let route of (climbingRoutesState$ | async).data" [routerLink]="['/climbing-sites', siteId, 'climbing-routes', route.id]">
+          <ion-label>
+            <h2>{{ route.name }}</h2>
+            <!-- <b>{{ site.address.state }}</b> {{ site.address.postCode + " " + site.address.city}} -->
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    
+      <ion-infinite-scroll threshold="100px" [disabled]="(climbingRoutesState$ | async).allDataLoaded || siteId === undefined" [appAutoComplete]="'QUERY_CLIMBING_ROUTES'" (ionInfinite)="loadData($event)">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more climbing routes...">
+        </ion-infinite-scroll-content>
+      </ion-infinite-scroll>
 </ion-content>

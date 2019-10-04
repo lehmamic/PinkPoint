@@ -18,6 +18,126 @@ namespace PinkPoint.ClimbingRoutes.DataAccess
                     City ="Winterthur",
                     State = "Zürich",
                 },
+                Routes= new[]
+                {
+                    new ClimbingRoute
+                    {
+                        Id = Guid.NewGuid(),
+                        Name = "Mamba",
+                        Grade = "6a",
+                        Type = ClimbingRouteType.SportClimbing,
+                        ImageUri = "http://localhost",
+                        Color = "#FF0000",
+                    },
+                    new ClimbingRoute
+                    {
+                        Id = Guid.NewGuid(),
+                        Name = "Zamba",
+                        Grade = "5c",
+                        Type = ClimbingRouteType.SportClimbing,
+                        ImageUri = "http://localhost",
+                        Color = "#228b22",
+                    },
+                    new ClimbingRoute
+                    {
+                        Id = Guid.NewGuid(),
+                        Name = "Matterhorn",
+                        Grade = "3b",
+                        Type = ClimbingRouteType.SportClimbing,
+                        ImageUri = "http://localhost",
+                        Color = "#228b22",
+                    },
+                    new ClimbingRoute
+                    {
+                        Id = Guid.NewGuid(),
+                        Name = "Zahnweh",
+                        Grade = "4b+",
+                        Type = ClimbingRouteType.SportClimbing,
+                        ImageUri = "http://localhost",
+                        Color = "#228b22",
+                    },
+                    new ClimbingRoute
+                    {
+                        Id = Guid.NewGuid(),
+                        Name = "Marsupilami",
+                        Grade = "7c",
+                        Type = ClimbingRouteType.SportClimbing,
+                        ImageUri = "http://localhost",
+                        Color = "#228b22",
+                    },
+                    new ClimbingRoute
+                    {
+                        Id = Guid.NewGuid(),
+                        Name = "Affezoo",
+                        Grade = "2b",
+                        Type = ClimbingRouteType.SportClimbing,
+                        ImageUri = "http://localhost",
+                        Color = "#228b22",
+                    },
+                    new ClimbingRoute
+                    {
+                        Id = Guid.NewGuid(),
+                        Name = "Rattenschwanz",
+                        Grade = "5a+",
+                        Type = ClimbingRouteType.SportClimbing,
+                        ImageUri = "http://localhost",
+                        Color = "#228b22",
+                    },
+                    new ClimbingRoute
+                    {
+                        Id = Guid.NewGuid(),
+                        Name = "Frederic",
+                        Grade = "6b",
+                        Type = ClimbingRouteType.SportClimbing,
+                        ImageUri = "http://localhost",
+                        Color = "#228b22",
+                    },
+                    new ClimbingRoute
+                    {
+                        Id = Guid.NewGuid(),
+                        Name = "Achnei",
+                        Grade = "4c",
+                        Type = ClimbingRouteType.SportClimbing,
+                        ImageUri = "http://localhost",
+                        Color = "#228b22",
+                    },
+                    new ClimbingRoute
+                    {
+                        Id = Guid.NewGuid(),
+                        Name = "Blablup",
+                        Grade = "3c+",
+                        Type = ClimbingRouteType.SportClimbing,
+                        ImageUri = "http://localhost",
+                        Color = "#228b22",
+                    },
+                    new ClimbingRoute
+                    {
+                        Id = Guid.NewGuid(),
+                        Name = "Steilaufstieg",
+                        Grade = "6a",
+                        Type = ClimbingRouteType.SportClimbing,
+                        ImageUri = "http://localhost",
+                        Color = "#228b22",
+                    },
+                    new ClimbingRoute
+                    {
+                        Id = Guid.NewGuid(),
+                        Name = "Abgefahren",
+                        Grade = "5a",
+                        Type = ClimbingRouteType.SportClimbing,
+                        ImageUri = "http://localhost",
+                        Color = "#228b22",
+                    },
+                    new ClimbingRoute
+                    {
+                        Id = Guid.NewGuid(),
+                        Name = "Zerschlissen",
+                        Grade = "5a+",
+                        Type = ClimbingRouteType.SportClimbing,
+                        ImageUri = "http://localhost",
+                        Color = "#228b22",
+                    },
+                }
             },
             new ClimbingSite
             {
@@ -30,6 +150,7 @@ namespace PinkPoint.ClimbingRoutes.DataAccess
                     City ="Winterthur",
                     State = "Zürich",
                 },
+                Routes = new ClimbingRoute[0],
             },
             new ClimbingSite
             {
@@ -42,6 +163,7 @@ namespace PinkPoint.ClimbingRoutes.DataAccess
                     City ="Greifensee",
                     State = "Zürich",
                 },
+                Routes = new ClimbingRoute[0],
             },
             new ClimbingSite
             {
@@ -54,6 +176,7 @@ namespace PinkPoint.ClimbingRoutes.DataAccess
                     City ="Uster",
                     State = "Zürich",
                 },
+                Routes = new ClimbingRoute[0],
             },
             new ClimbingSite
             {
@@ -66,6 +189,7 @@ namespace PinkPoint.ClimbingRoutes.DataAccess
                     City ="Schafhausen",
                     State = "Schaffhausen",
                 },
+                Routes = new ClimbingRoute[0],
             },
             new ClimbingSite
             {
@@ -78,6 +202,7 @@ namespace PinkPoint.ClimbingRoutes.DataAccess
                     City ="Chur",
                     State = "Graubünden",
                 },
+                Routes = new ClimbingRoute[0],
             },
             new ClimbingSite
             {
@@ -90,6 +215,7 @@ namespace PinkPoint.ClimbingRoutes.DataAccess
                     City ="Eschenz",
                     State = "Thurgau",
                 },
+                Routes = new ClimbingRoute[0],
             },
             new ClimbingSite
             {
@@ -102,6 +228,7 @@ namespace PinkPoint.ClimbingRoutes.DataAccess
                     City ="Zürich",
                     State = "Zürich",
                 },
+                Routes = new ClimbingRoute[0],
             },
             new ClimbingSite
             {
@@ -114,6 +241,7 @@ namespace PinkPoint.ClimbingRoutes.DataAccess
                     City ="Flums",
                     State = "St. Gallen",
                 },
+                Routes = new ClimbingRoute[0],
             },
             new ClimbingSite
             {
@@ -126,6 +254,7 @@ namespace PinkPoint.ClimbingRoutes.DataAccess
                     City ="Givisiez",
                     State = "Freiburg",
                 },
+                Routes = new ClimbingRoute[0],
             },
             new ClimbingSite
             {
@@ -138,6 +267,7 @@ namespace PinkPoint.ClimbingRoutes.DataAccess
                     City ="Arth",
                     State = "Schwyz",
                 },
+                Routes = new ClimbingRoute[0],
             },
             new ClimbingSite
             {
@@ -150,6 +280,7 @@ namespace PinkPoint.ClimbingRoutes.DataAccess
                     City ="Grindelwald",
                     State = "Bern",
                 },
+                Routes = new ClimbingRoute[0],
             },
             new ClimbingSite
             {
@@ -162,6 +293,7 @@ namespace PinkPoint.ClimbingRoutes.DataAccess
                     City ="Brugg",
                     State = "Aargau",
                 },
+                Routes = new ClimbingRoute[0],
             },
             new ClimbingSite
             {
@@ -174,6 +306,7 @@ namespace PinkPoint.ClimbingRoutes.DataAccess
                     City ="Pratteln",
                     State = "Basel",
                 },
+                Routes = new ClimbingRoute[0],
             },
             new ClimbingSite
             {
@@ -186,6 +319,7 @@ namespace PinkPoint.ClimbingRoutes.DataAccess
                     City ="Hamburg",
                     State = "Freie und Hansestadt Hamburg",
                 },
+                Routes = new ClimbingRoute[0],
             },
         };
     }

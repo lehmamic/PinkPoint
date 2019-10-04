@@ -6,12 +6,12 @@ import { takeUntil } from 'rxjs/operators';
 import { IonRefresher, IonInfiniteScroll } from '@ionic/angular';
 
 @Directive({
-  selector: 'ion-infinite-scroll[appTrackLoading], ion-refresher[appTrackLoading'
+  selector: 'ion-infinite-scroll[appAutoComplete], ion-refresher[appAutoComplete]'
 })
-export class TrackLoadingDirective implements OnInit, OnDestroy  {
+export class AutoCompleteDirective implements OnInit, OnDestroy  {
 
   // tslint:disable-next-line:no-input-rename
-  @Input('appTrackLoading') public requestType: RequestType;
+  @Input('appAutoComplete') public requestType: RequestType;
 
   private component: IonRefresher | IonInfiniteScroll;
   private stop$ = new Subject();
