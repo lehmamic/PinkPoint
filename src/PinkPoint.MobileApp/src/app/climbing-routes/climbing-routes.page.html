@@ -15,8 +15,7 @@
       <ion-list>
         <ion-item *ngFor="let route of (climbingRoutesState$ | async).data" [routerLink]="['/climbing-sites', siteId, 'climbing-routes', route.id]">
           <ion-label>
-            <h2>{{ route.name }}</h2>
-            <!-- <b>{{ site.address.state }}</b> {{ site.address.postCode + " " + site.address.city}} -->
+            <h2>{{ route.grade + " " + route.name }}</h2>
           </ion-label>
         </ion-item>
       </ion-list>

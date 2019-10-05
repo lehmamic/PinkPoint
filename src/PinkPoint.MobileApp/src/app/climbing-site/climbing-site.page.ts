@@ -21,7 +21,6 @@ export class ClimbingSitePage implements OnInit {
 
   ngOnInit() {
     this.route.paramMap.pipe(
-      tap(p => console.dir(p)),
       filter(paramMap => paramMap.has('id')),
       map(paramMap => new LoadClimbingSiteAction({ id: paramMap.get('id') })),
     ).subscribe(a => this.store$.dispatch(a));

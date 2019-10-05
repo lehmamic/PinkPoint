@@ -58,4 +58,8 @@ export class ClimbingRoutesService {
 
     return this.http.get<ClimbingRouteResponse[]>(`${environment.apiRootUri}/climbing-sites/${siteId}/climbing-routes`, { params });
   }
+
+  public loadClimbingRoute(siteId: string, id: string): Observable<ClimbingRouteResponse> {
+    return this.http.get<ClimbingRouteResponse>(`${environment.apiRootUri}/climbing-sites/${siteId}/climbing-routes/${id}`);
+  }
 }

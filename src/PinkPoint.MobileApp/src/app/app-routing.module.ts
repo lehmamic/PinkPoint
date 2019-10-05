@@ -14,6 +14,10 @@ const routes: Routes = [
     path: 'climbing-sites/:siteId/climbing-routes',
     loadChildren: () => import('./climbing-routes/climbing-routes.module').then(m => m.ClimbingRoutesPageModule),
   },
+  {
+    path: 'climbing-sites/:siteId/climbing-routes/:id',
+    loadChildren: () => import('./climbing-route/climbing-route.module').then(m => m.ClimbingRoutePageModule),
+  },
 ];
 @NgModule({
   imports: [

@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ (climbingRoute$ | async).grade + " " + (climbingRoute$ | async).name }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="climbing-route-info">
+        <h1>{{ (climbingRoute$ | async).grade + " " + (climbingRoute$ | async).name }}</h1>
+        <p>
+          {{ (climbingRoute$ | async).type }} <br />
+          {{ (climbingRoute$ | async).imageUri }} <br />
+          {{ (climbingRoute$ | async).color }}
+        </p>
+      </div>
+</ion-content>
