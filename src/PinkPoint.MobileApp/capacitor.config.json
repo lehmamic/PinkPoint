@@ -1,0 +1,7 @@
+{
+  "appId": "lehmamic.pinkpoint",
+  "appName": "PinkPoint",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www"
+}
