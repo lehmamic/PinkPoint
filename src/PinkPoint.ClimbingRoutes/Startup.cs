@@ -26,16 +26,6 @@ namespace PinkPoint.ClimbingRoutes
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors(options =>
-            {
-                options.AddPolicy("local",
-                builder =>
-                {
-                    builder.AllowAnyHeader()
-                           .AllowAnyMethod()
-                           .AllowAnyOrigin();
-                });
-            });
             services.AddAutoMapper(typeof(Startup).Assembly);
             services.AddControllers();
         }
@@ -46,7 +36,6 @@ namespace PinkPoint.ClimbingRoutes
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseCors("local");
             }
 
             app.UseRouting();

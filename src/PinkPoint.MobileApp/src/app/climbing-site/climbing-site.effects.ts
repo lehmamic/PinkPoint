@@ -17,7 +17,7 @@ export class ClimbingSiteEffects {
   loadClimbingSite$ = createEffect(() => this.actions$.pipe(
     ofType<LoadClimbingSiteAction>(ClimbingSiteActionTypes.LoadClimbingSite),
     withLatestFrom(of(Guid.create())),
-    flatMap(([action, correlationId]) => this.climbingRoutesService.loadClimbingSite(action.payload.id)
+    flatMap(([action, correlationId]) => this.climbingRoutesService.loadClimbingSite(action.payload.id, correlationId)
       .pipe(
         flatMap(climbingSite => [
             new LoadClimbingSiteSucceededAction({ climbingSite }),

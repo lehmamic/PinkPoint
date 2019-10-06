@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
+import { Guid } from 'guid-typescript';
 
 export interface Address {
   street: string;
@@ -39,27 +40,49 @@ export class ClimbingRoutesService {
 
   constructor(private http: HttpClient) { }
 
-  public queryClimbingSites(queryParam: { skip?: number; take?: number }): Observable<ClimbingSiteResponse[]> {
+  public queryClimbingSites(
+    queryParam: { skip?: number; take?: number },
+    correlationId = Guid.create(),
+  ): Observable<ClimbingSiteResponse[]> {
     const params = new HttpParams()
       .set('skip', queryParam.skip !== undefined ? `${queryParam.skip}` : '0')
       .set('take', queryParam.take !== undefined ? `${queryParam.take}` : '10');
 
-    return this.http.get<ClimbingSiteResponse[]>(`${environment.apiRootUri}/climbing-sites`, { params });
+    const headers = new HttpHeaders()
+      .set('CorrelationId', `${correlationId}`);
+
+    return this.http.get<ClimbingSiteResponse[]>(`${environment.apiRootUri}/climbing-sites`, { params, headers });
   }
 
-  public loadClimbingSite(id: string): Observable<ClimbingSiteResponse> {
-    return this.http.get<ClimbingSiteResponse>(`${environment.apiRootUri}/climbing-sites/${id}`);
+  public loadClimbingSite(id: string, correlationId = Guid.create()): Observable<ClimbingSiteResponse> {
+    const headers = new HttpHeaders()
+      .set('CorrelationId', `${correlationId}`);
+
+    return this.http.get<ClimbingSiteResponse>(`${environment.apiRootUri}/climbing-sites/${id}`, { headers });
   }
 
-  public queryClimbingRoutes(siteId: string, queryParam: { skip?: number; take?: number }): Observable<ClimbingRouteResponse[]> {
+  public queryClimbingRoutes(
+    siteId: string,
+    queryParam: { skip?: number; take?: number },
+    correlationId = Guid.create(),
+    ): Observable<ClimbingRouteResponse[]> {
     const params = new HttpParams()
       .set('skip', queryParam.skip !== undefined ? `${queryParam.skip}` : '0')
       .set('take', queryParam.take !== undefined ? `${queryParam.take}` : '10');
 
-    return this.http.get<ClimbingRouteResponse[]>(`${environment.apiRootUri}/climbing-sites/${siteId}/climbing-routes`, { params });
+    const headers = new HttpHeaders()
+      .set('CorrelationId', `${correlationId}`);
+
+    return this.http.get<ClimbingRouteResponse[]>(
+      `${environment.apiRootUri}/climbing-sites/${siteId}/climbing-routes`,
+      { params, headers }
+    );
   }
 
-  public loadClimbingRoute(siteId: string, id: string): Observable<ClimbingRouteResponse> {
-    return this.http.get<ClimbingRouteResponse>(`${environment.apiRootUri}/climbing-sites/${siteId}/climbing-routes/${id}`);
+  public loadClimbingRoute(siteId: string, id: string, correlationId = Guid.create()): Observable<ClimbingRouteResponse> {
+    const headers = new HttpHeaders()
+      .set('CorrelationId', `${correlationId}`);
+
+    return this.http.get<ClimbingRouteResponse>(`${environment.apiRootUri}/climbing-sites/${siteId}/climbing-routes/${id}`, { headers });
   }
 }
