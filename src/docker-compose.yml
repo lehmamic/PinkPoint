@@ -2,14 +2,17 @@ version: '3.4'
 
 services:
   pinkpoint.climbingroutes:
-    image: ${DOCKER_REGISTRY-}pinkpoint/climbing-routes
+    image: ${DOCKER_REGISTRY-}pinkpoint/climbing-routes:latest
     build:
       context: .
       dockerfile: PinkPoint.ClimbingRoutes/Dockerfile
 
   pinkpoint.apigateway:
-    image: ${DOCKER_REGISTRY-}pinkpoint/api-gateway
+    image: ${DOCKER_REGISTRY-}pinkpoint/api-gateway:latest
     build:
       context: .
       dockerfile: PinkPoint.ApiGateway/Dockerfile
+
+  ravendb:
+    image: ravendb/ravendb:4.2.4-patch-42020-ubuntu.18.04-x64
 
