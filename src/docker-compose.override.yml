@@ -1,15 +1,19 @@
 version: '3.4'
 
 services:
+
   pinkpoint.climbingroutes:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
     ports:
       - "5001:80"
+
   pinkpoint.apigateway:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - http://+:80
     ports:
       - "5000:80"
+    volumes:
+      - ./ocelot.config.json:/app/ocelot.config.json

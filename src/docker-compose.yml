@@ -2,13 +2,13 @@ version: '3.4'
 
 services:
   pinkpoint.climbingroutes:
-    image: ${DOCKER_REGISTRY-}pinkpoint
+    image: ${DOCKER_REGISTRY-}pinkpoint/climbing-routes
     build:
       context: .
       dockerfile: PinkPoint.ClimbingRoutes/Dockerfile
 
   pinkpoint.apigateway:
-    image: ${DOCKER_REGISTRY-}pinkpoint
+    image: ${DOCKER_REGISTRY-}pinkpoint/api-gateway
     build:
       context: .
       dockerfile: PinkPoint.ApiGateway/Dockerfile
