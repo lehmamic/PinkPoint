@@ -6,5 +6,5 @@ replicaCount: 1
 
 image:
   repository: docker.pkg.github.com/lehmamic/pinkpoint/climbing-routes
-  tag: 0.1.84
+  tag: ${app-version}
   pullPolicy: Always
