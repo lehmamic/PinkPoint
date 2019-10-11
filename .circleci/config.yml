@@ -108,10 +108,11 @@ jobs:
           name: create helm chart
           working_directory: ./helm-charts
           command: |
-            echo '$FullSemVer'
-            sed 's/#{app-version}/$FullSemVer/g' ./PinkPoint.ClimbingRoutes/Chart.yaml.template > ./PinkPoint.ClimbingRoutes/Chart.yaml
+            echo "$FullSemVer"
+            echo "${FullSemVer}"
+            sed "s/#{app-version}/${FullSemVer}/g" ./PinkPoint.ClimbingRoutes/Chart.yaml.template > ./PinkPoint.ClimbingRoutes/Chart.yaml
             cat ./PinkPoint.ClimbingRoutes/Chart.yaml
-            sed 's/#{app-version}/$FullSemVer/g' ./PinkPoint.ClimbingRoutes/values.yaml.template > ./PinkPoint.ClimbingRoutes/values.yaml
+            sed "s/#{app-version}/${FullSemVer}/g" ./PinkPoint.ClimbingRoutes/values.yaml.template > ./PinkPoint.ClimbingRoutes/values.yaml
             cat ./PinkPoint.ClimbingRoutes/values.yaml
 
   build_api_gateway:
