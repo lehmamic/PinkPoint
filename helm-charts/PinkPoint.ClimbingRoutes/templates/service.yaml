@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: pinkpoint-climbingroutes
+spec:
+  selector:
+    app: pinkpoint-climbingroutes
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80

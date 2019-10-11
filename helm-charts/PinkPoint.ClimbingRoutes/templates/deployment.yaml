@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pinkpoint-climbingroutes
+  labels:
+    app: pinkpoint-climbingroutes
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: pinkpoint-climbingroutes
+  template:
+    metadata:
+      labels:
+        app: pinkpoint-climbingroutes
+    spec:
+      containers:
+      - name: climbingroutes
+        image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        ports:
+        - containerPort: 80
+        env:
+        - name: ASPNETCORE_URLS
+          value: http://+:80
