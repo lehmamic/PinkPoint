@@ -106,7 +106,7 @@ jobs:
 
       - run:
           name: create helm chart
-          working_directory: ./helm_charts
+          working_directory: ./helm-charts
           command: |
             ls -a
             sed 's/#{app-version}/${FullSemVer}/g' ./PinkPoint.ClimbingRoutes/Chart.yaml.template > ./PinkPoint.ClimbingRoutes/Chart.yaml
