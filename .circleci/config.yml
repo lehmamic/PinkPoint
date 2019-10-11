@@ -84,6 +84,34 @@ jobs:
           name: docker push
           command: docker push docker.pkg.github.com/lehmamic/pinkpoint/climbing-routes:${FullSemVer}
 
+  package_climbing_routes:
+    docker:
+      - image: circleci/node:lts
+
+    steps:
+      - attach_workspace:
+          at: /home/circleci/project
+
+      - run:
+          name: restore git version
+          command: |
+            cat git-version.json
+            cat 
+            for s in $(cat git-version.json | jq -r "to_entries|map(\"\(.key)=\(.value|tostring)\")|.[]" ); do
+              echo "$s"
+              echo "export $s" >> $BASH_ENV
+            done
+            source $BASH_ENV
+            printenv
+
+      - run:
+          name: create helm chart
+          command: |
+            sed 's/#{app-version}/0.1-test/g' ./PinkPoint.ClimbingRoutes/Chart.yaml.template > ./PinkPoint.ClimbingRoutes/Chart.yaml
+            cat ./PinkPoint.ClimbingRoutes/Chart.yaml
+            sed 's/#{app-version}/0.1-test/g' ./PinkPoint.ClimbingRoutes/values.yaml.template > ./PinkPoint.ClimbingRoutes/values.yaml
+            cat ./PinkPoint.ClimbingRoutes/values.yaml
+          working_directory: ./helm_charts
   build_api_gateway:
     docker:
       - image: circleci/node:lts
@@ -132,6 +160,10 @@ workflows:
       - build_climbing_routes:
           requires:
             - git-version
+
+      - package_climbing_routes:
+          requires:
+            - build_climbing_routes
 
       - build_api_gateway:
           requires:
