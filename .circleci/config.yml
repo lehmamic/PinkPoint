@@ -130,7 +130,7 @@ jobs:
       - helm/upgrade-helm-chart:
           chart: ./helm-charts/PinkPoint.ClimbingRoutes
           namespace: pinkpoint
-          release: pinkpoint.climbing-routes
+          release-name: pinkpoint.climbing-routes
 
       # - azure-aks/update-kubeconfig-with-credentials:
       #     cluster-name: "leh"
