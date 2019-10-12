@@ -180,7 +180,7 @@ orbs:
   jq: circleci/jq@1.9.0
   azure-cli: circleci/azure-cli@1.0.0
   kubernetes: circleci/kubernetes@0.4.0
-  helm: circleci/helm@0.1.1
+  helm: circleci/helm@0.2.0
 
 workflows:
   version: 2.1
