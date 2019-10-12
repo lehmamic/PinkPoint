@@ -119,7 +119,7 @@ jobs:
       - kubernetes/install
 
       - azure-cli/login-with-user:
-          alternate-tenant: true
+          alternate-tenant: false
 
       # - azure-aks/update-kubeconfig-with-credentials:
       #     cluster-name: "leh"
