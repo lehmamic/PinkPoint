@@ -125,7 +125,7 @@ jobs:
 
       - run:
           name: update kubeconfig with credentials
-          command: az aks get-credentials --resource-group Kubernetes --cluster leh --subscription 6a1e4fbf-eda1-4431-a090-4ba9b4817bde
+          command: az aks get-credentials --resource-group Kubernetes --name leh --subscription 6a1e4fbf-eda1-4431-a090-4ba9b4817bde
 
       - helm/upgrade-helm-chart:
           chart: ./helm-charts/PinkPoint.ClimbingRoutes
