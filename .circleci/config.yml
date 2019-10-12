@@ -114,13 +114,17 @@ jobs:
             sed "s/#{app-version}/${FullSemVer}/g" ./PinkPoint.ClimbingRoutes/values.yaml.template > ./PinkPoint.ClimbingRoutes/values.yaml
             cat ./PinkPoint.ClimbingRoutes/values.yaml
 
-      - azure-aks/update-kubeconfig-with-credentials:
-          cluster-name: "leh"
-          get-admin-credentials: false
-          install-kubectl: true
-          perform-login: true
-          resource-group: "Kubernetes"
-          subscription: "cd10e437-6fd5-4c7f-a7b2-821f1c0fb4fb"
+      - azure-cli/install
+
+      - azure-cli/login-with-user
+
+      # - azure-aks/update-kubeconfig-with-credentials:
+      #     cluster-name: "leh"
+      #     get-admin-credentials: false
+      #     install-kubectl: true
+      #     perform-login: true
+      #     resource-group: "Kubernetes"
+      #     subscription: "cd10e437-6fd5-4c7f-a7b2-821f1c0fb4fb"
 
   build_api_gateway:
     docker:
