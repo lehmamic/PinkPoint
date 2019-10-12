@@ -118,9 +118,19 @@ jobs:
 
       - kubernetes/install
 
-      # - azure-cli/login-with-user:
-      #     alternate-tenant: true
+      - helm/install-helm-client:
+          version: v2.14.1
+
       - azure-cli/login-with-service-principal
+
+      - run:
+          name: update kubeconfig with credentials
+          command: az aks get-credentials --resource-group Kubernetes --cluster leh --subscription 6a1e4fbf-eda1-4431-a090-4ba9b4817bde
+
+      - helm/upgrade-helm-chart:
+          chart: ./helm-charts/PinkPoint.ClimbingRoutes
+          namespace: pinkpoint
+          release: pinkpoint.climbing-routes
 
       # - azure-aks/update-kubeconfig-with-credentials:
       #     cluster-name: "leh"
@@ -169,8 +179,8 @@ jobs:
 orbs:
   jq: circleci/jq@1.9.0
   azure-cli: circleci/azure-cli@1.0.0
-  azure-aks: circleci/azure-aks@0.2.1
   kubernetes: circleci/kubernetes@0.4.0
+  helm: circleci/helm@0.1.1
 
 workflows:
   version: 2.1
