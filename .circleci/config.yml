@@ -114,7 +114,7 @@ jobs:
             sed "s/#{app-version}/${FullSemVer}/g" ./PinkPoint.ClimbingRoutes/values.yaml.template > ./PinkPoint.ClimbingRoutes/values.yaml
             cat ./PinkPoint.ClimbingRoutes/values.yaml
 
-      - update-kubeconfig-with-credentials:
+      - azure-aks/update-kubeconfig-with-credentials:
           cluster-name: "leh"
           get-admin-credentials: false
           install-kubectl: true
