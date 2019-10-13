@@ -8,3 +8,4 @@ image:
   repository: docker.pkg.github.com/lehmamic/pinkpoint/climbing-routes
   tag: #{app-version}
   pullPolicy: Always
+  imagePullSecret: githubregcred
