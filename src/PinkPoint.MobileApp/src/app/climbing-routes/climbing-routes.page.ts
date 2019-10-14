@@ -32,11 +32,11 @@ export class ClimbingRoutesPage implements OnInit {
     });
   }
 
-  public doRefresh() {
+  public doRefresh(event) {
     this.store$.dispatch(new QueryClimbingRoutesAction({ siteId: this.siteId, queryParam: { skip: 0, take: 10 } }));
   }
 
-  public loadData() {
+  public loadData(event) {
     this.store$.dispatch(new QueryClimbingRoutesNextPageAction({ siteId: this.siteId }));
   }
 }

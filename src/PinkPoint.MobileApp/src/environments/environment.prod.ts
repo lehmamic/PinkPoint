@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiRootUri: 'http://localhost:5001/api/v1',
+  apiRootUri: 'http://pinkpoint-api.c90b5ad23c6d4683a634.westeurope.aksapp.io/api/v1',
 };
