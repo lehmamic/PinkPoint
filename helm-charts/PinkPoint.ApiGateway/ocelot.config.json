@@ -8,7 +8,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "pinkpoint-climbingroutes.pinkpoint",
+          "Host": "pinkpoint-climbingroutes",
           "Port": 80
         }
       ],
@@ -20,7 +20,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "pinkpoint-climbingroutes.pinkpoint",
+          "Host": "pinkpoint-climbingroutes",
           "Port": 80
         }
       ],

@@ -1,0 +1,35 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: pinkpoint-apigateway
+  labels:
+    app: pinkpoint-apigateway
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: pinkpoint-apigateway
+  template:
+    metadata:
+      labels:
+        app: pinkpoint-apigateway
+    spec:
+      containers:
+      - name: apigateway
+        image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        ports:
+        - containerPort: 80
+        env:
+        - name: ASPNETCORE_URLS
+          value: http://+:80
+        volumeMounts:
+        - name: ocelot-config-volume
+          mountPath: /app/ocelot.config.json
+          subPath: ocelot.config.json
+      imagePullSecrets:
+      - name: {{ .Values.image.imagePullSecret }}
+      volumes:
+      - name: ocelot-config-volume
+        configMap:
+          name: ocelot-config
