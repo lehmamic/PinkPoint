@@ -22,13 +22,13 @@ namespace PinkPoint.ApiGateway
             System.Console.WriteLine($"Config: {this.Configuration.GetValue<string>("ReRoutes:0:DownstreamHostAndPorts:0:Host")}");
             services.AddCors(options =>
             {
-                options.AddPolicy("local",
-                builder =>
-                {
-                    builder.AllowAnyHeader()
-                           .AllowAnyMethod()
-                           .AllowAnyOrigin();
-                });
+                options.AddPolicy("default",
+                    builder =>
+                    {
+                        builder.AllowAnyHeader()
+                               .AllowAnyMethod()
+                               .WithOrigins("capacitor://localhost", "http://localhost", "http://localhost:4200", "http://localhost:8100");
+                    });
             });
 
             services.AddOcelot();
@@ -40,10 +40,10 @@ namespace PinkPoint.ApiGateway
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseCors("local");
             }
 
-                app.UseOcelot();
+            app.UseCors("default");
+            app.UseOcelot();
         }
     }
 }
