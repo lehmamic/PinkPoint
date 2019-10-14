@@ -6,6 +6,6 @@ replicaCount: 1
 
 image:
   repository: docker.pkg.github.com/lehmamic/pinkpoint/api-gateway
-  tag: 0.1.108
+  tag: #{app-version}
   pullPolicy: Always
   imagePullSecret: githubregcred
