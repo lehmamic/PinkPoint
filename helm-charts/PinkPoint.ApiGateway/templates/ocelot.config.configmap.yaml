@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ocelot-config
+data:
+  ocelot.config.json: |-
+{{ .Files.Get "ocelot.config.json" | indent 4 }}
