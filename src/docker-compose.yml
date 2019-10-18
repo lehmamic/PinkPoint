@@ -13,6 +13,12 @@ services:
       context: .
       dockerfile: PinkPoint.ApiGateway/Dockerfile
 
+  pinkpoint.identityprovider:
+    image: ${DOCKER_REGISTRY-}pinkpoint
+    build:/identity-provider:latest
+      context: .
+      dockerfile: PinkPoint.IdentityProvider/Dockerfile
+
   ravendb:
     image: ravendb/ravendb:4.2.4-patch-42020-ubuntu.18.04-x64
 
