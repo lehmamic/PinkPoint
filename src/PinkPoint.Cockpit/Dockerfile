@@ -11,7 +11,17 @@ COPY . .
 WORKDIR "/src/PinkPoint.Cockpit"
 RUN dotnet build "PinkPoint.Cockpit.csproj" -c Release -o /app/build
 
+FROM node:12.12 AS build-client
+WORKDIR /src
+COPY PinkPoint.CockpitApp/package.json PinkPoint.CockpitApp/
+COPY PinkPoint.CockpitApp/package-lock.json PinkPoint.CockpitApp/
+RUN npm install --prefix PinkPoint.CockpitApp
+COPY . .
+WORKDIR "/src/PinkPoint.CockpitApp"
+RUN npm run build -- --prod
+
 FROM build AS publish
+COPY --from=build-client /src/PinkPoint.CockpitApp/dist/pinkpoint-cockpitapp/ ./wwwroot/
 RUN dotnet publish "PinkPoint.Cockpit.csproj" -c Release -o /app/publish
 
 FROM base AS final
