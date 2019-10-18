@@ -9,6 +9,10 @@ Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PinkPoint.ApiGateway", "PinkPoint.ApiGateway\PinkPoint.ApiGateway.csproj", "{3553FA34-E823-4377-9B2B-3A07FF8B4237}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PinkPoint.ImageRecognition", "PinkPoint.ImageRecognition\PinkPoint.ImageRecognition.csproj", "{2DE0CBC1-777D-48D9-AB26-4C8CC0F12790}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PinkPoint.IdentityProvider", "PinkPoint.IdentityProvider\PinkPoint.IdentityProvider.csproj", "{6A143AD1-1FB1-4970-B38E-1EBE7DB5D506}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,6 +62,30 @@ Global
 		{3553FA34-E823-4377-9B2B-3A07FF8B4237}.Release|x64.Build.0 = Release|Any CPU
 		{3553FA34-E823-4377-9B2B-3A07FF8B4237}.Release|x86.ActiveCfg = Release|Any CPU
 		{3553FA34-E823-4377-9B2B-3A07FF8B4237}.Release|x86.Build.0 = Release|Any CPU
+		{2DE0CBC1-777D-48D9-AB26-4C8CC0F12790}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DE0CBC1-777D-48D9-AB26-4C8CC0F12790}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DE0CBC1-777D-48D9-AB26-4C8CC0F12790}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{2DE0CBC1-777D-48D9-AB26-4C8CC0F12790}.Debug|x64.Build.0 = Debug|Any CPU
+		{2DE0CBC1-777D-48D9-AB26-4C8CC0F12790}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2DE0CBC1-777D-48D9-AB26-4C8CC0F12790}.Debug|x86.Build.0 = Debug|Any CPU
+		{2DE0CBC1-777D-48D9-AB26-4C8CC0F12790}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DE0CBC1-777D-48D9-AB26-4C8CC0F12790}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DE0CBC1-777D-48D9-AB26-4C8CC0F12790}.Release|x64.ActiveCfg = Release|Any CPU
+		{2DE0CBC1-777D-48D9-AB26-4C8CC0F12790}.Release|x64.Build.0 = Release|Any CPU
+		{2DE0CBC1-777D-48D9-AB26-4C8CC0F12790}.Release|x86.ActiveCfg = Release|Any CPU
+		{2DE0CBC1-777D-48D9-AB26-4C8CC0F12790}.Release|x86.Build.0 = Release|Any CPU
+		{6A143AD1-1FB1-4970-B38E-1EBE7DB5D506}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A143AD1-1FB1-4970-B38E-1EBE7DB5D506}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A143AD1-1FB1-4970-B38E-1EBE7DB5D506}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{6A143AD1-1FB1-4970-B38E-1EBE7DB5D506}.Debug|x64.Build.0 = Debug|Any CPU
+		{6A143AD1-1FB1-4970-B38E-1EBE7DB5D506}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6A143AD1-1FB1-4970-B38E-1EBE7DB5D506}.Debug|x86.Build.0 = Debug|Any CPU
+		{6A143AD1-1FB1-4970-B38E-1EBE7DB5D506}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A143AD1-1FB1-4970-B38E-1EBE7DB5D506}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A143AD1-1FB1-4970-B38E-1EBE7DB5D506}.Release|x64.ActiveCfg = Release|Any CPU
+		{6A143AD1-1FB1-4970-B38E-1EBE7DB5D506}.Release|x64.Build.0 = Release|Any CPU
+		{6A143AD1-1FB1-4970-B38E-1EBE7DB5D506}.Release|x86.ActiveCfg = Release|Any CPU
+		{6A143AD1-1FB1-4970-B38E-1EBE7DB5D506}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		Policies = $0
