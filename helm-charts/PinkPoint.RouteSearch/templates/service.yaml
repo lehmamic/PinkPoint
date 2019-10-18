@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: pinkpoint-imagerecognition
+  name: pinkpoint-routesearch
 spec:
   selector:
-    app: pinkpoint-imagerecognition
+    app: pinkpoint-routesearch
   ports:
     - protocol: TCP
       port: 80

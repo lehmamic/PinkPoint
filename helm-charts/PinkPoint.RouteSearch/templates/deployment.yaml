@@ -1,21 +1,21 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: pinkpoint-imagerecognition
+  name: pinkpoint-routesearch
   labels:
-    app: pinkpoint-imagerecognition
+    app: pinkpoint-routesearch
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: pinkpoint-imagerecognition
+      app: pinkpoint-routesearch
   template:
     metadata:
       labels:
-        app: pinkpoint-imagerecognition
+        app: pinkpoint-routesearch
     spec:
       containers:
-      - name: imagerecognition
+      - name: routesearch
         image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         ports:
