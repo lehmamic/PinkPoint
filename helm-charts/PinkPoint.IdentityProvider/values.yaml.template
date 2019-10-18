@@ -1,0 +1,11 @@
+# Default values for PinkPoint.IdentityProvider.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: docker.pkg.github.com/lehmamic/pinkpoint/idenity-provider
+  tag: #{app-version}
+  pullPolicy: Always
+  imagePullSecret: githubregcred
