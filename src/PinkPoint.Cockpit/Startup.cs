@@ -36,7 +36,7 @@ namespace PinkPoint.Cockpit
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
+            app.UseStaticFiles();
 
             app.UseRouting();
 
