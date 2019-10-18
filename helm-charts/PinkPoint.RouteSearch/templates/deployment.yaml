@@ -1,0 +1,27 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: pinkpoint-imagerecognition
+  labels:
+    app: pinkpoint-imagerecognition
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: pinkpoint-imagerecognition
+  template:
+    metadata:
+      labels:
+        app: pinkpoint-imagerecognition
+    spec:
+      containers:
+      - name: imagerecognition
+        image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        ports:
+        - containerPort: 80
+        env:
+        - name: ASPNETCORE_URLS
+          value: http://+:80
+      imagePullSecrets:
+      - name: {{ .Values.image.imagePullSecret }}
