@@ -18,6 +18,27 @@ services:
     volumes:
       - ./ocelot.config.json:/app/ocelot.config.json
 
+  pinkpoint.identityprovider:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+    ports:
+      - "5100:80"
+ 
+  pinkpoint.imagerecognition:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+    ports:
+      - "5002:80"
+
+  pinkpoint.cockpit:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+    ports:
+      - "5200:80"
+
   ravendb:
     ports:
     - target: 443
@@ -32,41 +53,5 @@ services:
     volumes:
     - db-data:/opt/RavenDB/Server/RavenData
 
-  pinkpoint.identityprovider:
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=https://+:443;http://+:80
-      - ASPNETCORE_HTTPS_PORT=44301
-    ports:
-      - "33937:80"
-      - "44301:443"
-    volumes:
-      - ~/.aspnet/https:/root/.aspnet/https:ro
-      - ~/.microsoft/usersecrets:/root/.microsoft/usersecrets:ro
-  pinkpoint.imagerecognition:
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=https://+:443;http://+:80
-      - ASPNETCORE_HTTPS_PORT=44325
-    ports:
-      - "46640:80"
-      - "44325:443"
-    volumes:
-      - ~/.aspnet/https:/root/.aspnet/https:ro
-      - ~/.microsoft/usersecrets:/root/.microsoft/usersecrets:ro
-  pinkpoint.cockpit:
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=https://+:443;http://+:80
-      - ASPNETCORE_HTTPS_PORT=44344
-    ports:
-      - "56932:80"
-      - "44344:443"
-    volumes:
-      - ~/.aspnet/https:/root/.aspnet/https:ro
-      - ~/.microsoft/usersecrets:/root/.microsoft/usersecrets:ro
 volumes:
   db-data:
-
-
-
