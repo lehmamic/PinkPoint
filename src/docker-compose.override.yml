@@ -30,7 +30,7 @@ services:
       published: 38888
       mode: host
     volumes:
-    - ravendb-data:/opt/RavenDB/Server/RavenData
+    - db-data:/opt/RavenDB/Server/RavenData
 
 volumes:
-  ravendb-data:
+  db-data:
