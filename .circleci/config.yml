@@ -216,6 +216,342 @@ jobs:
           namespace: pinkpoint
           release-name: pinkpoint.api-gateway
 
+  build_cockpit:
+    docker:
+      - image: circleci/node:lts
+
+    steps:
+      - attach_workspace:
+          at: /home/circleci/project
+
+      - setup_remote_docker
+
+      - run:
+          name: restore git version
+          command: |
+            cat git-version.json
+            cat 
+            for s in $(cat git-version.json | jq -r "to_entries|map(\"\(.key)=\(.value|tostring)\")|.[]" ); do
+              echo "$s"
+              echo "export $s" >> $BASH_ENV
+            done
+            source $BASH_ENV
+            printenv
+
+      - run:
+          name: build docker image
+          working_directory: ./src
+          command: |
+           docker build -t docker.pkg.github.com/lehmamic/pinkpoint/cockpit:${FullSemVer} -f PinkPoint.Cockpit/Dockerfile .
+
+      - run:
+          name: docker login
+          command: docker login docker.pkg.github.com -u $DOCKER_USER -p $DOCKER_PASS
+
+      - run:
+          name: docker push
+          command: docker push docker.pkg.github.com/lehmamic/pinkpoint/cockpit:${FullSemVer}
+
+  deploy_cockpit:
+    executor: azure-aks/default
+
+    steps:
+      - attach_workspace:
+          at: /home/circleci/project
+
+      - run:
+          name: restore git version
+          command: |
+            cat git-version.json
+            cat 
+            for s in $(cat git-version.json | jq -r "to_entries|map(\"\(.key)=\(.value|tostring)\")|.[]" ); do
+              echo "$s"
+              echo "export $s" >> $BASH_ENV
+            done
+            source $BASH_ENV
+            printenv
+
+      - run:
+          name: create helm chart
+          working_directory: ./helm-charts
+          command: |
+            echo "$FullSemVer"
+            echo "${FullSemVer}"
+            sed "s/#{app-version}/${FullSemVer}/g" ./PinkPoint.Cockpit/Chart.yaml.template > ./PinkPoint.Cockpit/Chart.yaml
+            cat ./PinkPoint.Cockpit/Chart.yaml
+            sed "s/#{app-version}/${FullSemVer}/g" ./PinkPoint.Cockpit/values.yaml.template > ./PinkPoint.Cockpit/values.yaml
+            cat ./PinkPoint.Cockpit/values.yaml
+
+      - azure-cli/install
+
+      - kubernetes/install
+
+      - helm/install-helm-client:
+          version: v2.14.1
+
+      - azure-cli/login-with-service-principal
+
+      - run:
+          name: update kubeconfig with credentials
+          command: az aks get-credentials --resource-group Kubernetes --name leh --subscription 6a1e4fbf-eda1-4431-a090-4ba9b4817bde
+
+      - helm/upgrade-helm-chart:
+          chart: ./helm-charts/PinkPoint.Cockpit
+          namespace: pinkpoint
+          release-name: pinkpoint.cockpit
+
+  build_identity_provider:
+    docker:
+      - image: circleci/node:lts
+
+    steps:
+      - attach_workspace:
+          at: /home/circleci/project
+
+      - setup_remote_docker
+
+      - run:
+          name: restore git version
+          command: |
+            cat git-version.json
+            cat 
+            for s in $(cat git-version.json | jq -r "to_entries|map(\"\(.key)=\(.value|tostring)\")|.[]" ); do
+              echo "$s"
+              echo "export $s" >> $BASH_ENV
+            done
+            source $BASH_ENV
+            printenv
+
+      - run:
+          name: build docker image
+          working_directory: ./src
+          command: |
+           docker build -t docker.pkg.github.com/lehmamic/pinkpoint/identity-provider:${FullSemVer} -f PinkPoint.IdentityProvider/Dockerfile .
+
+      - run:
+          name: docker login
+          command: docker login docker.pkg.github.com -u $DOCKER_USER -p $DOCKER_PASS
+
+      - run:
+          name: docker push
+          command: docker push docker.pkg.github.com/lehmamic/pinkpoint/identity-provider:${FullSemVer}
+
+  deploy_identity_provider:
+    executor: azure-aks/default
+
+    steps:
+      - attach_workspace:
+          at: /home/circleci/project
+
+      - run:
+          name: restore git version
+          command: |
+            cat git-version.json
+            cat 
+            for s in $(cat git-version.json | jq -r "to_entries|map(\"\(.key)=\(.value|tostring)\")|.[]" ); do
+              echo "$s"
+              echo "export $s" >> $BASH_ENV
+            done
+            source $BASH_ENV
+            printenv
+
+      - run:
+          name: create helm chart
+          working_directory: ./helm-charts
+          command: |
+            echo "$FullSemVer"
+            echo "${FullSemVer}"
+            sed "s/#{app-version}/${FullSemVer}/g" ./PinkPoint.IdentityProvider/Chart.yaml.template > ./PinkPoint.IdentityProvider/Chart.yaml
+            cat ./PinkPoint.IdentityProvider/Chart.yaml
+            sed "s/#{app-version}/${FullSemVer}/g" ./PinkPoint.IdentityProvider/values.yaml.template > ./PinkPoint.IdentityProvider/values.yaml
+            cat ./PinkPoint.IdentityProvider/values.yaml
+
+      - azure-cli/install
+
+      - kubernetes/install
+
+      - helm/install-helm-client:
+          version: v2.14.1
+
+      - azure-cli/login-with-service-principal
+
+      - run:
+          name: update kubeconfig with credentials
+          command: az aks get-credentials --resource-group Kubernetes --name leh --subscription 6a1e4fbf-eda1-4431-a090-4ba9b4817bde
+
+      - helm/upgrade-helm-chart:
+          chart: ./helm-charts/PinkPoint.IdentityProvider
+          namespace: pinkpoint
+          release-name: pinkpoint.identity-provider
+
+  build_image_recognition:
+    docker:
+      - image: circleci/node:lts
+
+    steps:
+      - attach_workspace:
+          at: /home/circleci/project
+
+      - setup_remote_docker
+
+      - run:
+          name: restore git version
+          command: |
+            cat git-version.json
+            cat 
+            for s in $(cat git-version.json | jq -r "to_entries|map(\"\(.key)=\(.value|tostring)\")|.[]" ); do
+              echo "$s"
+              echo "export $s" >> $BASH_ENV
+            done
+            source $BASH_ENV
+            printenv
+
+      - run:
+          name: build docker image
+          working_directory: ./src
+          command: |
+           docker build -t docker.pkg.github.com/lehmamic/pinkpoint/image-recognition:${FullSemVer} -f PinkPoint.ImageRecognition/Dockerfile .
+
+      - run:
+          name: docker login
+          command: docker login docker.pkg.github.com -u $DOCKER_USER -p $DOCKER_PASS
+
+      - run:
+          name: docker push
+          command: docker push docker.pkg.github.com/lehmamic/pinkpoint/image-recognition:${FullSemVer}
+
+  deploy_image_recognition:
+    executor: azure-aks/default
+
+    steps:
+      - attach_workspace:
+          at: /home/circleci/project
+
+      - run:
+          name: restore git version
+          command: |
+            cat git-version.json
+            cat 
+            for s in $(cat git-version.json | jq -r "to_entries|map(\"\(.key)=\(.value|tostring)\")|.[]" ); do
+              echo "$s"
+              echo "export $s" >> $BASH_ENV
+            done
+            source $BASH_ENV
+            printenv
+
+      - run:
+          name: create helm chart
+          working_directory: ./helm-charts
+          command: |
+            echo "$FullSemVer"
+            echo "${FullSemVer}"
+            sed "s/#{app-version}/${FullSemVer}/g" ./PinkPoint.ImageRecognition/Chart.yaml.template > ./PinkPoint.ImageRecognition/Chart.yaml
+            cat ./PinkPoint.ImageRecognition/Chart.yaml
+            sed "s/#{app-version}/${FullSemVer}/g" ./PinkPoint.ImageRecognition/values.yaml.template > ./PinkPoint.ImageRecognition/values.yaml
+            cat ./PinkPoint.ImageRecognition/values.yaml
+
+      - azure-cli/install
+
+      - kubernetes/install
+
+      - helm/install-helm-client:
+          version: v2.14.1
+
+      - azure-cli/login-with-service-principal
+
+      - run:
+          name: update kubeconfig with credentials
+          command: az aks get-credentials --resource-group Kubernetes --name leh --subscription 6a1e4fbf-eda1-4431-a090-4ba9b4817bde
+
+      - helm/upgrade-helm-chart:
+          chart: ./helm-charts/PinkPoint.ImageRecognition
+          namespace: pinkpoint
+          release-name: pinkpoint.image-recognition
+
+  build_route_search:
+    docker:
+      - image: circleci/node:lts
+
+    steps:
+      - attach_workspace:
+          at: /home/circleci/project
+
+      - setup_remote_docker
+
+      - run:
+          name: restore git version
+          command: |
+            cat git-version.json
+            cat 
+            for s in $(cat git-version.json | jq -r "to_entries|map(\"\(.key)=\(.value|tostring)\")|.[]" ); do
+              echo "$s"
+              echo "export $s" >> $BASH_ENV
+            done
+            source $BASH_ENV
+            printenv
+
+      - run:
+          name: build docker image
+          working_directory: ./src
+          command: |
+           docker build -t docker.pkg.github.com/lehmamic/pinkpoint/route-search:${FullSemVer} -f PinkPoint.RouteSearch/Dockerfile .
+
+      - run:
+          name: docker login
+          command: docker login docker.pkg.github.com -u $DOCKER_USER -p $DOCKER_PASS
+
+      - run:
+          name: docker push
+          command: docker push docker.pkg.github.com/lehmamic/pinkpoint/route-search:${FullSemVer}
+
+  deploy_route_search:
+    executor: azure-aks/default
+
+    steps:
+      - attach_workspace:
+          at: /home/circleci/project
+
+      - run:
+          name: restore git version
+          command: |
+            cat git-version.json
+            cat 
+            for s in $(cat git-version.json | jq -r "to_entries|map(\"\(.key)=\(.value|tostring)\")|.[]" ); do
+              echo "$s"
+              echo "export $s" >> $BASH_ENV
+            done
+            source $BASH_ENV
+            printenv
+
+      - run:
+          name: create helm chart
+          working_directory: ./helm-charts
+          command: |
+            echo "$FullSemVer"
+            echo "${FullSemVer}"
+            sed "s/#{app-version}/${FullSemVer}/g" ./PinkPoint.RouteSearch/Chart.yaml.template > ./PinkPoint.RouteSearch/Chart.yaml
+            cat ./PinkPoint.RouteSearch/Chart.yaml
+            sed "s/#{app-version}/${FullSemVer}/g" ./PinkPoint.RouteSearch/values.yaml.template > ./PinkPoint.RouteSearch/values.yaml
+            cat ./PinkPoint.RouteSearch/values.yaml
+
+      - azure-cli/install
+
+      - kubernetes/install
+
+      - helm/install-helm-client:
+          version: v2.14.1
+
+      - azure-cli/login-with-service-principal
+
+      - run:
+          name: update kubeconfig with credentials
+          command: az aks get-credentials --resource-group Kubernetes --name leh --subscription 6a1e4fbf-eda1-4431-a090-4ba9b4817bde
+
+      - helm/upgrade-helm-chart:
+          chart: ./helm-charts/PinkPoint.RouteSearch
+          namespace: pinkpoint
+          release-name: pinkpoint.route-search
+
 orbs:
   jq: circleci/jq@1.9.0
   azure-cli: circleci/azure-cli@1.0.0
@@ -224,7 +560,7 @@ orbs:
   helm: circleci/helm@0.2.0
 
 workflows:
-  version: 2.1
+  version: 2
   build_and_deploy:
     jobs:
       - git-version
@@ -244,3 +580,35 @@ workflows:
       - deploy_api_gateway:
           requires:
             - build_api_gateway
+
+      - build_cockpit:
+          requires:
+            - git-version
+
+      - deploy_cockpit:
+          requires:
+            - build_cockpit
+
+      - build_identity_provider:
+          requires:
+            - git-version
+
+      - deploy_identity_provider:
+          requires:
+            - build_identity_provider
+
+      - build_image_recognition:
+          requires:
+            - git-version
+
+      - deploy_image_recognition:
+          requires:
+            - build_image_recognition
+
+      - build_route_search:
+          requires:
+            - git-version
+
+      - deploy_route_search:
+          requires:
+            - build_route_search
