@@ -25,6 +25,12 @@ services:
       context: .
       dockerfile: PinkPoint.ImageRecognition/Dockerfile
 
+  pinkpoint.cockpit:
+    image: ${DOCKER_REGISTRY-}pinkpoint/cockpit:latest
+    build:
+      context: .
+      dockerfile: PinkPoint.Cockpit/Dockerfile
+
   ravendb:
     image: ravendb/ravendb:4.2.4-patch-42020-ubuntu.18.04-x64
 
