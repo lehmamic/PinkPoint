@@ -14,8 +14,8 @@ services:
       dockerfile: PinkPoint.ApiGateway/Dockerfile
 
   pinkpoint.identityprovider:
-    image: ${DOCKER_REGISTRY-}pinkpoint
-    build:/identity-provider:latest
+    image: ${DOCKER_REGISTRY-}pinkpoint/identity-provider:latest
+    build:
       context: .
       dockerfile: PinkPoint.IdentityProvider/Dockerfile
 
