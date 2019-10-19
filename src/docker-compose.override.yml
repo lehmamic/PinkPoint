@@ -46,6 +46,13 @@ services:
     ports:
       - "5003:80"
 
+  pinkpoint.media:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+    ports:
+      - "5004:80"
+
   ravendb:
     ports:
     - target: 443
@@ -62,3 +69,4 @@ services:
     
 volumes:
   db-data:
+

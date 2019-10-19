@@ -37,6 +37,12 @@ services:
       context: .
       dockerfile: PinkPoint.RouteSearch/Dockerfile
 
+  pinkpoint.media:
+    image: ${DOCKER_REGISTRY-}pinkpoint
+    build:
+      context: .
+      dockerfile: PinkPoint.Media/Dockerfile
+
   ravendb:
     image: ravendb/ravendb:4.2.4-patch-42020-ubuntu.18.04-x64
 
