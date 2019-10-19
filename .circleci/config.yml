@@ -552,6 +552,90 @@ jobs:
           namespace: pinkpoint
           release-name: pinkpoint.route-search
 
+  build_media:
+    docker:
+      - image: circleci/node:lts
+
+    steps:
+      - attach_workspace:
+          at: /home/circleci/project
+
+      - setup_remote_docker
+
+      - run:
+          name: restore git version
+          command: |
+            cat git-version.json
+            cat 
+            for s in $(cat git-version.json | jq -r "to_entries|map(\"\(.key)=\(.value|tostring)\")|.[]" ); do
+              echo "$s"
+              echo "export $s" >> $BASH_ENV
+            done
+            source $BASH_ENV
+            printenv
+
+      - run:
+          name: build docker image
+          working_directory: ./src
+          command: |
+           docker build -t docker.pkg.github.com/lehmamic/pinkpoint/media:${FullSemVer} -f PinkPoint.Media/Dockerfile .
+
+      - run:
+          name: docker login
+          command: docker login docker.pkg.github.com -u $DOCKER_USER -p $DOCKER_PASS
+
+      - run:
+          name: docker push
+          command: docker push docker.pkg.github.com/lehmamic/pinkpoint/media:${FullSemVer}
+
+  deploy_media:
+    executor: azure-aks/default
+
+    steps:
+      - attach_workspace:
+          at: /home/circleci/project
+
+      - run:
+          name: restore git version
+          command: |
+            cat git-version.json
+            cat 
+            for s in $(cat git-version.json | jq -r "to_entries|map(\"\(.key)=\(.value|tostring)\")|.[]" ); do
+              echo "$s"
+              echo "export $s" >> $BASH_ENV
+            done
+            source $BASH_ENV
+            printenv
+
+      - run:
+          name: create helm chart
+          working_directory: ./helm-charts
+          command: |
+            echo "$FullSemVer"
+            echo "${FullSemVer}"
+            sed "s/#{app-version}/${FullSemVer}/g" ./PinkPoint.Media/Chart.yaml.template > ./PinkPoint.Media/Chart.yaml
+            cat ./PinkPoint.Media/Chart.yaml
+            sed "s/#{app-version}/${FullSemVer}/g" ./PinkPoint.Media/values.yaml.template > ./PinkPoint.Media/values.yaml
+            cat ./PinkPoint.Media/values.yaml
+
+      - azure-cli/install
+
+      - kubernetes/install
+
+      - helm/install-helm-client:
+          version: v2.14.1
+
+      - azure-cli/login-with-service-principal
+
+      - run:
+          name: update kubeconfig with credentials
+          command: az aks get-credentials --resource-group Kubernetes --name leh --subscription 6a1e4fbf-eda1-4431-a090-4ba9b4817bde
+
+      - helm/upgrade-helm-chart:
+          chart: ./helm-charts/PinkPoint.Media
+          namespace: pinkpoint
+          release-name: pinkpoint.media
+
 orbs:
   jq: circleci/jq@1.9.0
   azure-cli: circleci/azure-cli@1.0.0
@@ -612,3 +696,11 @@ workflows:
       - deploy_route_search:
           requires:
             - build_route_search
+
+      - build_media:
+          requires:
+            - git-version
+
+      - deploy_media:
+          requires:
+            - build_media
