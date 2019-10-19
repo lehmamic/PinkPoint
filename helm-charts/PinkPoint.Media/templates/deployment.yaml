@@ -1,0 +1,27 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: pinkpoint-media
+  labels:
+    app: pinkpoint-media
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: pinkpoint-media
+  template:
+    metadata:
+      labels:
+        app: pinkpoint-media
+    spec:
+      containers:
+      - name: media
+        image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        ports:
+        - containerPort: 80
+        env:
+        - name: ASPNETCORE_URLS
+          value: http://+:80
+      imagePullSecrets:
+      - name: {{ .Values.image.imagePullSecret }}
