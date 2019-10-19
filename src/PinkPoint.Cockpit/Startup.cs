@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
@@ -36,6 +37,19 @@ namespace PinkPoint.Cockpit
                 app.UseDeveloperExceptionPage();
             }
 
+            app.Use(async (context, next) =>
+            {
+                await next();
+
+                if (context.Response.StatusCode == 404 && !Path.HasExtension(context.Request.Path.Value) && !context.Request.Path.Value.StartsWith("api", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    context.Request.Path = "/Index.html";
+                    context.Response.StatusCode = 200;
+                    await next();
+                }
+            });
+
+            app.UseDefaultFiles();
             app.UseStaticFiles();
 
             app.UseRouting();
