@@ -31,11 +31,11 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
-      - GOOGLE_APPLICATION_CREDENTIALS=/app/google-cloud-credengtials.json
+      - GOOGLE_APPLICATION_CREDENTIALS=/app/google-cloud-credentials.json
     ports:
       - "5002:80"
     volumes:
-      - ./PinkPoint-8385749116e7.json:/app/google-cloud-credengtials.json
+      - ./PinkPoint-8385749116e7.json:/app/google-cloud-credentials.json
 
   pinkpoint.cockpit:
     environment:

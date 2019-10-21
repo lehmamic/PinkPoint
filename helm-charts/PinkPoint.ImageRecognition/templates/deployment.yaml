@@ -14,14 +14,25 @@ spec:
       labels:
         app: pinkpoint-imagerecognition
     spec:
+      volumes:
+      - name: google-cloud-cred
+        secret:
+          secretName: google-cloud-cred
       containers:
       - name: imagerecognition
         image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
+        volumeMounts:
+        - mountPath: /app/google-cloud-credentials.json
+          name: google-cloud-cred
+          subPath: PinkPoint-8385749116e7.json
+          readOnly: true
         ports:
         - containerPort: 80
         env:
         - name: ASPNETCORE_URLS
           value: http://+:80
+        - name: GOOGLE_APPLICATION_CREDENTIALS
+          value: /app/google-cloud-credentials.json
       imagePullSecrets:
       - name: {{ .Values.image.imagePullSecret }}
