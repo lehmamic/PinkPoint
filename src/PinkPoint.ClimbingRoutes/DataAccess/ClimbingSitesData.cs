@@ -9,7 +9,7 @@ namespace PinkPoint.ClimbingRoutes.DataAccess
         {
             new ClimbingSite
             {
-                Id = Guid.NewGuid(),
+                Id = Guid.NewGuid().ToString(),
                 Name = "6a plus - Kletterhalle Winterthur",
                 Address = new Address
                 {
@@ -22,118 +22,118 @@ namespace PinkPoint.ClimbingRoutes.DataAccess
                 {
                     new ClimbingRoute
                     {
-                        Id = Guid.NewGuid(),
+                        Id = Guid.NewGuid().ToString(),
                         Name = "Mamba",
                         Grade = "6a",
-                        Type = ClimbingRouteType.SportClimbing,
+                        Type = ClimbingRouteType.LeadClimbing,
                         ImageUri = "http://localhost",
                         Color = "#FF0000",
                     },
                     new ClimbingRoute
                     {
-                        Id = Guid.NewGuid(),
+                        Id = Guid.NewGuid().ToString(),
                         Name = "Zamba",
                         Grade = "5c",
-                        Type = ClimbingRouteType.SportClimbing,
+                        Type = ClimbingRouteType.LeadClimbing,
                         ImageUri = "http://localhost",
                         Color = "#228b22",
                     },
                     new ClimbingRoute
                     {
-                        Id = Guid.NewGuid(),
+                        Id = Guid.NewGuid().ToString(),
                         Name = "Matterhorn",
                         Grade = "3b",
-                        Type = ClimbingRouteType.SportClimbing,
+                        Type = ClimbingRouteType.LeadClimbing,
                         ImageUri = "http://localhost",
                         Color = "#228b22",
                     },
                     new ClimbingRoute
                     {
-                        Id = Guid.NewGuid(),
+                        Id = Guid.NewGuid().ToString(),
                         Name = "Zahnweh",
                         Grade = "4b+",
-                        Type = ClimbingRouteType.SportClimbing,
+                        Type = ClimbingRouteType.LeadClimbing,
                         ImageUri = "http://localhost",
                         Color = "#228b22",
                     },
                     new ClimbingRoute
                     {
-                        Id = Guid.NewGuid(),
+                        Id = Guid.NewGuid().ToString(),
                         Name = "Marsupilami",
                         Grade = "7c",
-                        Type = ClimbingRouteType.SportClimbing,
+                        Type = ClimbingRouteType.LeadClimbing,
                         ImageUri = "http://localhost",
                         Color = "#228b22",
                     },
                     new ClimbingRoute
                     {
-                        Id = Guid.NewGuid(),
+                        Id = Guid.NewGuid().ToString(),
                         Name = "Affezoo",
                         Grade = "2b",
-                        Type = ClimbingRouteType.SportClimbing,
+                        Type = ClimbingRouteType.LeadClimbing,
                         ImageUri = "http://localhost",
                         Color = "#228b22",
                     },
                     new ClimbingRoute
                     {
-                        Id = Guid.NewGuid(),
+                        Id = Guid.NewGuid().ToString(),
                         Name = "Rattenschwanz",
                         Grade = "5a+",
-                        Type = ClimbingRouteType.SportClimbing,
+                        Type = ClimbingRouteType.LeadClimbing,
                         ImageUri = "http://localhost",
                         Color = "#228b22",
                     },
                     new ClimbingRoute
                     {
-                        Id = Guid.NewGuid(),
+                        Id = Guid.NewGuid().ToString(),
                         Name = "Frederic",
                         Grade = "6b",
-                        Type = ClimbingRouteType.SportClimbing,
+                        Type = ClimbingRouteType.LeadClimbing,
                         ImageUri = "http://localhost",
                         Color = "#228b22",
                     },
                     new ClimbingRoute
                     {
-                        Id = Guid.NewGuid(),
+                        Id = Guid.NewGuid().ToString(),
                         Name = "Achnei",
                         Grade = "4c",
-                        Type = ClimbingRouteType.SportClimbing,
+                        Type = ClimbingRouteType.LeadClimbing,
                         ImageUri = "http://localhost",
                         Color = "#228b22",
                     },
                     new ClimbingRoute
                     {
-                        Id = Guid.NewGuid(),
+                        Id = Guid.NewGuid().ToString(),
                         Name = "Blablup",
                         Grade = "3c+",
-                        Type = ClimbingRouteType.SportClimbing,
+                        Type = ClimbingRouteType.LeadClimbing,
                         ImageUri = "http://localhost",
                         Color = "#228b22",
                     },
                     new ClimbingRoute
                     {
-                        Id = Guid.NewGuid(),
+                        Id = Guid.NewGuid().ToString(),
                         Name = "Steilaufstieg",
                         Grade = "6a",
-                        Type = ClimbingRouteType.SportClimbing,
+                        Type = ClimbingRouteType.LeadClimbing,
                         ImageUri = "http://localhost",
                         Color = "#228b22",
                     },
                     new ClimbingRoute
                     {
-                        Id = Guid.NewGuid(),
+                        Id = Guid.NewGuid().ToString(),
                         Name = "Abgefahren",
                         Grade = "5a",
-                        Type = ClimbingRouteType.SportClimbing,
+                        Type = ClimbingRouteType.LeadClimbing,
                         ImageUri = "http://localhost",
                         Color = "#228b22",
                     },
                     new ClimbingRoute
                     {
-                        Id = Guid.NewGuid(),
+                        Id = Guid.NewGuid().ToString(),
                         Name = "Zerschlissen",
                         Grade = "5a+",
-                        Type = ClimbingRouteType.SportClimbing,
+                        Type = ClimbingRouteType.LeadClimbing,
                         ImageUri = "http://localhost",
                         Color = "#228b22",
                     },
@@ -141,7 +141,7 @@ namespace PinkPoint.ClimbingRoutes.DataAccess
             },
             new ClimbingSite
             {
-                Id = Guid.NewGuid(),
+                Id = Guid.NewGuid().ToString(),
                 Name = "BLOCKFELD Boulderpark - Winterthur",
                 Address = new Address
                 {
@@ -154,7 +154,7 @@ namespace PinkPoint.ClimbingRoutes.DataAccess
             },
             new ClimbingSite
             {
-                Id = Guid.NewGuid(),
+                Id = Guid.NewGuid().ToString(),
                 Name = "Kletterzentrum Milandia Greifensee",
                 Address = new Address
                 {
@@ -167,7 +167,7 @@ namespace PinkPoint.ClimbingRoutes.DataAccess
             },
             new ClimbingSite
             {
-                Id = Guid.NewGuid(),
+                Id = Guid.NewGuid().ToString(),
                 Name = "Griffig Kletterhalle Uster",
                 Address = new Address
                 {
@@ -180,7 +180,7 @@ namespace PinkPoint.ClimbingRoutes.DataAccess
             },
             new ClimbingSite
             {
-                Id = Guid.NewGuid(),
+                Id = Guid.NewGuid().ToString(),
                 Name = "Aranea Schaffhausen",
                 Address = new Address
                 {
@@ -193,7 +193,7 @@ namespace PinkPoint.ClimbingRoutes.DataAccess
             },
             new ClimbingSite
             {
-                Id = Guid.NewGuid(),
+                Id = Guid.NewGuid().ToString(),
                 Name = "Ap und Daun",
                 Address = new Address
                 {
@@ -206,7 +206,7 @@ namespace PinkPoint.ClimbingRoutes.DataAccess
             },
             new ClimbingSite
             {
-                Id = Guid.NewGuid(),
+                Id = Guid.NewGuid().ToString(),
                 Name = "BLOCKFELD Boulders und Kletterwand",
                 Address = new Address
                 {
@@ -219,7 +219,7 @@ namespace PinkPoint.ClimbingRoutes.DataAccess
             },
             new ClimbingSite
             {
-                Id = Guid.NewGuid(),
+                Id = Guid.NewGuid().ToString(),
                 Name = "Minimum (Boulderhalle)",
                 Address = new Address
                 {
@@ -232,7 +232,7 @@ namespace PinkPoint.ClimbingRoutes.DataAccess
             },
             new ClimbingSite
             {
-                Id = Guid.NewGuid(),
+                Id = Guid.NewGuid().ToString(),
                 Name = "Boulderei Flums",
                 Address = new Address
                 {
@@ -245,7 +245,7 @@ namespace PinkPoint.ClimbingRoutes.DataAccess
             },
             new ClimbingSite
             {
-                Id = Guid.NewGuid(),
+                Id = Guid.NewGuid().ToString(),
                 Name = "Bloczone, Salle d'escalade",
                 Address = new Address
                 {
@@ -258,7 +258,7 @@ namespace PinkPoint.ClimbingRoutes.DataAccess
             },
             new ClimbingSite
             {
-                Id = Guid.NewGuid(),
+                Id = Guid.NewGuid().ToString(),
                 Name = "boulder-gade in Arth",
                 Address = new Address
                 {
@@ -271,7 +271,7 @@ namespace PinkPoint.ClimbingRoutes.DataAccess
             },
             new ClimbingSite
             {
-                Id = Guid.NewGuid(),
+                Id = Guid.NewGuid().ToString(),
                 Name = "Boulderraum Sportzentrum Grindelwald",
                 Address = new Address
                 {
@@ -284,7 +284,7 @@ namespace PinkPoint.ClimbingRoutes.DataAccess
             },
             new ClimbingSite
             {
-                Id = Guid.NewGuid(),
+                Id = Guid.NewGuid().ToString(),
                 Name = "Boulderraum Altstadt Brugg",
                 Address = new Address
                 {
@@ -297,7 +297,7 @@ namespace PinkPoint.ClimbingRoutes.DataAccess
             },
             new ClimbingSite
             {
-                Id = Guid.NewGuid(),
+                Id = Guid.NewGuid().ToString(),
                 Name = "B2 Boulder & Bar",
                 Address = new Address
                 {
@@ -310,7 +310,7 @@ namespace PinkPoint.ClimbingRoutes.DataAccess
             },
             new ClimbingSite
             {
-                Id = Guid.NewGuid(),
+                Id = Guid.NewGuid().ToString(),
                 Name = "Nordwandhalle",
                 Address = new Address
                 {

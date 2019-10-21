@@ -2,7 +2,8 @@
 {
     public enum ClimbingRouteType
     {
-        SportClimbing,
+        TopRope,
+        LeadClimbing,
         Bouldering,
     }
 }

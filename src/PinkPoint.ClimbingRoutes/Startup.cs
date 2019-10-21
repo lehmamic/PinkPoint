@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Raven.DependencyInjection;
 
 namespace PinkPoint.ClimbingRoutes
 {
@@ -27,6 +28,8 @@ namespace PinkPoint.ClimbingRoutes
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddAutoMapper(typeof(Startup).Assembly);
+            services.AddRavenDbDocStore();
+            services.AddRavenDbAsyncSession();
             services.AddControllers();
         }
 

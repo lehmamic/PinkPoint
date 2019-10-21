@@ -1,0 +1,24 @@
+{
+	"id": "e2bf6ca8-5c57-4bae-bf33-d50453b6a5c1",
+	"name": "PinkPoint_Local",
+	"values": [
+		{
+			"key": "BASE_URL",
+			"value": "http://localhost:5000/api/v1",
+			"enabled": true
+		},
+		{
+			"key": "SITE_ID",
+			"value": "e3ad85eb-c57a-4123-8a56-d66f305a50a7",
+			"enabled": true
+		},
+		{
+			"key": "ROUTE_ID",
+			"value": "a886a450-0368-4844-9f66-30e02909cea8",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2019-10-21T13:00:57.257Z",
+	"_postman_exported_using": "Postman/7.9.0"
+}
