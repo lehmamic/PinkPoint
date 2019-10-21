@@ -51,14 +51,14 @@ export class ClimbingRoutesService {
     const headers = new HttpHeaders()
       .set('CorrelationId', `${correlationId}`);
 
-    return this.http.get<ClimbingSiteResponse[]>(`${environment.apiRootUri}/climbing-sites`, { params, headers });
+    return this.http.get<ClimbingSiteResponse[]>(`${environment.apiRootUri}/r/climbing-sites`, { params, headers });
   }
 
   public loadClimbingSite(id: string, correlationId = Guid.create()): Observable<ClimbingSiteResponse> {
     const headers = new HttpHeaders()
       .set('CorrelationId', `${correlationId}`);
 
-    return this.http.get<ClimbingSiteResponse>(`${environment.apiRootUri}/climbing-sites/${id}`, { headers });
+    return this.http.get<ClimbingSiteResponse>(`${environment.apiRootUri}/r/climbing-sites/${id}`, { headers });
   }
 
   public queryClimbingRoutes(
@@ -74,7 +74,7 @@ export class ClimbingRoutesService {
       .set('CorrelationId', `${correlationId}`);
 
     return this.http.get<ClimbingRouteResponse[]>(
-      `${environment.apiRootUri}/climbing-sites/${siteId}/climbing-routes`,
+      `${environment.apiRootUri}/r/climbing-sites/${siteId}/climbing-routes`,
       { params, headers }
     );
   }
@@ -83,6 +83,6 @@ export class ClimbingRoutesService {
     const headers = new HttpHeaders()
       .set('CorrelationId', `${correlationId}`);
 
-    return this.http.get<ClimbingRouteResponse>(`${environment.apiRootUri}/climbing-sites/${siteId}/climbing-routes/${id}`, { headers });
+    return this.http.get<ClimbingRouteResponse>(`${environment.apiRootUri}/r/climbing-sites/${siteId}/climbing-routes/${id}`, { headers });
   }
 }
