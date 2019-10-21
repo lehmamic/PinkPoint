@@ -40,29 +40,14 @@ spec:
           subPath: raven.license.txt
           readOnly: true
         env:
-        # - name: RAVEN_ARGS
-        #   value: "'--Setup.Mode=None –-ServerUrl https://0.0.0.0'"
-        # - name: RAVEN_Setup_Mode
-        #   value: "None"
-        # - name: RAVEN_Security_Certificate_Path
-        #   value: "config/raven-server.certificate.pfx"
-        # - name: RAVEN_Security_Certificate_Password
-        #   valueFrom:
-        #     secretKeyRef:
-        #       name: raven-cert
-        #       key: password
-        # - name: RAVEN_License_Eula_Accepted
-        #   value: "true"
-        # - name: RAVEN_License_Path
-        #   value: "config/raven-server.license.txt"
-        # - name: RAVEN_ServerUrl
-        #   value: "https://0.0.0.0"
-        # - name: RAVEN_ServerUrl_Tcp
-        #   value: "tcp://0.0.0.0:38888"
-        # - name: RAVEN_PublicServerUrl
-        #   value: "https://raven-db.c90b5ad23c6d4683a634.westeurope.aksapp.io"
-        # - name: RAVEN_PublicServerUrl_Tcp
-        #   value: "tcp://tcp.raven-db.c90b5ad23c6d4683a634.westeurope.aksapp.io:443"
+        - name: RAVEN_ARGS
+          value: "'--Setup.Mode=None'"
+        - name: RAVEN_Security_UnsecuredAccessAllowed
+          value: "PrivateNetwork"
+        - name: RAVEN_License_Eula_Accepted
+          value: "true"
+        - name: RAVEN_License_Path
+          value: "config/raven-server.license.txt"
         ports:
         - name:  ravendb-https
           containerPort:  443

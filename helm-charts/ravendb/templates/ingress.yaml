@@ -4,7 +4,6 @@ metadata:
   name: ravendb
   annotations:
     kubernetes.io/ingress.class: addon-http-application-routing
-    ingress.kubernetes.io/ssl-passthrough: "true"
 spec:
   rules:
   - host: raven-db.c90b5ad23c6d4683a634.westeurope.aksapp.io
@@ -12,7 +11,7 @@ spec:
       paths:
       - backend:
           serviceName: ravendb
-          servicePort: 443
+          servicePort: 8080
         path: /
   - host: tcp.raven-db.c90b5ad23c6d4683a634.westeurope.aksapp.io
     http:
