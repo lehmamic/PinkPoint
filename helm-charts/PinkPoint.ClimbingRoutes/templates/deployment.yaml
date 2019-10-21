@@ -23,5 +23,9 @@ spec:
         env:
         - name: ASPNETCORE_URLS
           value: http://+:80
+        - name: RavenSettings__Urls__0
+          value: http://ravendb:8080
+        - name: RavenSettings__DatabaseName
+          value: PinkPoint.ClimbingRoutes
       imagePullSecrets:
       - name: {{ .Values.image.imagePullSecret }}

@@ -6,6 +6,8 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
+      - RavenSettings__Urls__0=http://ravendb:8080
+      - RavenSettings__DatabaseName=PinkPoint.ClimbingRoutes
     ports:
       - "5001:80"
 
