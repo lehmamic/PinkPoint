@@ -21,7 +21,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "pinkpoint.imagerecognition",
-          "Port": 5002
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/api/{version}/i/{everything}",
