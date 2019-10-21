@@ -54,6 +54,10 @@ services:
       - "5004:80"
 
   ravendb:
+    environment:
+    - RAVEN_ARGS='--Setup.Mode=None'
+    - RAVEN_Security_UnsecuredAccessAllowed='PrivateNetwork'
+
     ports:
     - target: 443
       published: 443
