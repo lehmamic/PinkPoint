@@ -1,0 +1,29 @@
+{
+	"id": "1eff2f33-bc66-4a7d-b407-d87545863098",
+	"name": "PinkPoint_Azure",
+	"values": [
+		{
+			"key": "BASE_URL",
+			"value": "http://pinkpoint-api.c90b5ad23c6d4683a634.westeurope.aksapp.io/api/v1",
+			"enabled": true
+		},
+		{
+			"key": "SITE_ID",
+			"value": "e45c7e1c-6c71-40a8-af54-6db88f37a8a0",
+			"enabled": true
+		},
+		{
+			"key": "ROUTE_ID",
+			"value": "08c1786d-0c68-4fde-abd3-9b366f8341eb",
+			"enabled": true
+		},
+		{
+			"key": "TARGET_ID",
+			"value": "0a863ee3-2843-4a47-90a8-5cf0b5473933",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2019-10-21T22:22:39.144Z",
+	"_postman_exported_using": "Postman/7.9.0"
+}

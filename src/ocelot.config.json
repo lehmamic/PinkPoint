@@ -14,6 +14,18 @@
       ],
       "UpstreamPathTemplate": "/api/{version}/r/{everything}",
       "UpstreamHttpMethod": [ "POST", "PUT", "GET", "DELETE", "OPTION" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/{version}/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "pinkpoint.imagerecognition",
+          "Port": 5002
+        }
+      ],
+      "UpstreamPathTemplate": "/api/{version}/i/{everything}",
+      "UpstreamHttpMethod": [ "POST", "PUT", "GET", "DELETE", "OPTION" ]
     }
   ]
 }

@@ -331,3 +331,6 @@ ASALocalRun/
 
 # OSX files
 .DS_Store
+
+# GoogleCloud files
+PinkPoint-*.json

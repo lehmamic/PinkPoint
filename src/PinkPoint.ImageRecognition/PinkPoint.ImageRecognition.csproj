@@ -7,6 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
+    <PackageReference Include="Google.Cloud.Vision.V1" Version="1.6.0" />
+    <PackageReference Include="Google.Cloud.Storage.V1" Version="2.3.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Services\" />
+    <Folder Include="Controllers\Targets\" />
+  </ItemGroup>
 </Project>
