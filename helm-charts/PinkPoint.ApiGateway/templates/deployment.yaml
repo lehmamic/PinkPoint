@@ -27,6 +27,7 @@ spec:
         - name: ocelot-config-volume
           mountPath: /app/ocelot.config.json
           subPath: ocelot.config.json
+          readOnly: true
       imagePullSecrets:
       - name: {{ .Values.image.imagePullSecret }}
       volumes:

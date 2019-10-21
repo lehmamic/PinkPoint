@@ -1,0 +1,72 @@
+apiVersion: apps/v1beta2
+kind: StatefulSet
+metadata:
+  name: ravendb
+  labels:
+    app: ravendb
+spec:
+  serviceName: ravendb
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ravendb
+  template:
+    metadata:
+      labels:
+        app: ravendb
+    spec:
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: ravendb-data
+      - name: ravendb-certificate
+        secret:
+          secretName: raven-cert
+      - name: ravendb-license
+        secret:
+          secretName: raven-lice
+      containers:
+      - name: ravendb
+        image: ravendb/ravendb:4.2.4-patch-42020-ubuntu.18.04-x64
+        volumeMounts:
+        - mountPath: "/opt/RavenDB/Server/RavenData"
+          name: data
+        - mountPath: config/raven-server.certificate.pfx
+          name: ravendb-certificate
+          subPath: c90b5ad23c6d4683a634.westeurope.aksapp.io.pfx
+          readOnly: true
+        - mountPath: config/raven-server.license.txt
+          name: ravendb-license
+          subPath: raven.license.txt
+          readOnly: true
+        env:
+        # - name: RAVEN_ARGS
+        #   value: "'--Setup.Mode=None –-ServerUrl https://0.0.0.0'"
+        # - name: RAVEN_Setup_Mode
+        #   value: "None"
+        # - name: RAVEN_Security_Certificate_Path
+        #   value: "config/raven-server.certificate.pfx"
+        # - name: RAVEN_Security_Certificate_Password
+        #   valueFrom:
+        #     secretKeyRef:
+        #       name: raven-cert
+        #       key: password
+        # - name: RAVEN_License_Eula_Accepted
+        #   value: "true"
+        # - name: RAVEN_License_Path
+        #   value: "config/raven-server.license.txt"
+        # - name: RAVEN_ServerUrl
+        #   value: "https://0.0.0.0"
+        # - name: RAVEN_ServerUrl_Tcp
+        #   value: "tcp://0.0.0.0:38888"
+        # - name: RAVEN_PublicServerUrl
+        #   value: "https://raven-db.c90b5ad23c6d4683a634.westeurope.aksapp.io"
+        # - name: RAVEN_PublicServerUrl_Tcp
+        #   value: "tcp://tcp.raven-db.c90b5ad23c6d4683a634.westeurope.aksapp.io:443"
+        ports:
+        - name:  ravendb-https
+          containerPort:  443
+        - name:  ravendb-http
+          containerPort:  8080
+        - name:  ravendb-tcp
+          containerPort:  38888

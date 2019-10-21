@@ -1,0 +1,26 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name:  ravendb
+spec:
+  selector:
+    app: ravendb
+  template:
+    metadata:
+      labels:
+        editor: vscode
+        app: ravendb
+  type: ClusterIP
+  ports:
+  - name: ravendb-https
+    port: 443
+    protocol: TCP
+    targetPort: 443
+  - name: ravendb-http
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  - name: ravendb-tcp
+    port: 38888
+    protocol: TCP
+    targetPort: 38888
